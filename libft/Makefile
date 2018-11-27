@@ -108,7 +108,7 @@ INCLS = ./includes/
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra -I$(INCLS) -c -o
+CFLAGS = -Wall -Werror -Wextra -I $(INCLS) -c -o
 
 all: $(NAME)
 

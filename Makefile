@@ -46,7 +46,7 @@ IFLAGS = -I $(INCL_PATH) -I $(LIBFT_INCL_PATH) -I $(SDL_INCL_PATH)
 
 LDLIBFT = -L ./libft -lft
 
-LIBS = -lm -lpthread
+LIBS = -lm -lpthread -lSDL2
 
 CC = clang
 
@@ -57,7 +57,7 @@ RM = rm -rf
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@cd $(SDL_NAME) ; ./configure ; $(MAKE) ; sudo $(MAKE) install
+	@if [ ! -d "./$(SDL_NAME)/build" ] ; then $(MAKE) sdl2 ; fi
 	@$(MAKE) -C libft
 	@$(CC) $(OBJS) $(LDLIBFT) $(LIBS) -o $@
 
@@ -65,8 +65,11 @@ $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INCL)
 	@mkdir $(OBJ_PATH) 2> /dev/null || true
 	@$(CC) $(CFLAGS) $(IFLAGS) -o $@ -c $<
 
+sdl2:
+	@cd $(SDL_NAME) ; ./configure ; $(MAKE) ; sudo $(MAKE) install
+
 run: $(NAME)
-	./$(NAME)
+	./$(NAME) $(NAME)
 
 norm:
 	norminette $(SRCS) $(INCL)

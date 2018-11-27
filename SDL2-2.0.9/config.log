@@ -864,7 +864,7 @@ configure:16657: $? = 0
 configure:16657: result: yes
 configure:16657: checking for strlcpy
 configure:16657: gcc -o conftest -g -O2 -Iinclude -I/home/lfatton/Louttia/wolf3d/SDL2-2.0.9/include -idirafter /home/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/khronos   -Iinclude -I/home/lfatton/Louttia/wolf3d/SDL2-2.0.9/include -idirafter /home/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/khronos   conftest.c  >&5
-/tmp/ccaOIqfM.o: In function `main':
+/tmp/ccYG1xq2.o: In function `main':
 /home/lfatton/Louttia/wolf3d/SDL2-2.0.9/conftest.c:98: undefined reference to `strlcpy'
 collect2: error: ld returned 1 exit status
 configure:16657: $? = 1
@@ -973,7 +973,7 @@ configure: failed program was:
 configure:16657: result: no
 configure:16657: checking for strlcat
 configure:16657: gcc -o conftest -g -O2 -Iinclude -I/home/lfatton/Louttia/wolf3d/SDL2-2.0.9/include -idirafter /home/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/khronos   -Iinclude -I/home/lfatton/Louttia/wolf3d/SDL2-2.0.9/include -idirafter /home/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/khronos   conftest.c  >&5
-/tmp/ccIUzKCO.o: In function `main':
+/tmp/ccsmnXL4.o: In function `main':
 /home/lfatton/Louttia/wolf3d/SDL2-2.0.9/conftest.c:98: undefined reference to `strlcat'
 collect2: error: ld returned 1 exit status
 configure:16657: $? = 1
@@ -1082,7 +1082,7 @@ configure: failed program was:
 configure:16657: result: no
 configure:16657: checking for _strrev
 configure:16657: gcc -o conftest -g -O2 -Iinclude -I/home/lfatton/Louttia/wolf3d/SDL2-2.0.9/include -idirafter /home/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/khronos   -Iinclude -I/home/lfatton/Louttia/wolf3d/SDL2-2.0.9/include -idirafter /home/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/khronos   conftest.c  >&5
-/tmp/ccWr6KFP.o: In function `main':
+/tmp/ccYfw9F5.o: In function `main':
 /home/lfatton/Louttia/wolf3d/SDL2-2.0.9/conftest.c:98: undefined reference to `_strrev'
 collect2: error: ld returned 1 exit status
 configure:16657: $? = 1
@@ -1191,7 +1191,7 @@ configure: failed program was:
 configure:16657: result: no
 configure:16657: checking for _strupr
 configure:16657: gcc -o conftest -g -O2 -Iinclude -I/home/lfatton/Louttia/wolf3d/SDL2-2.0.9/include -idirafter /home/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/khronos   -Iinclude -I/home/lfatton/Louttia/wolf3d/SDL2-2.0.9/include -idirafter /home/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/khronos   conftest.c  >&5
-/tmp/ccw8M6PR.o: In function `main':
+/tmp/ccqCEDY8.o: In function `main':
 /home/lfatton/Louttia/wolf3d/SDL2-2.0.9/conftest.c:98: undefined reference to `_strupr'
 collect2: error: ld returned 1 exit status
 configure:16657: $? = 1
@@ -1300,7 +1300,7 @@ configure: failed program was:
 configure:16657: result: no
 configure:16657: checking for _strlwr
 configure:16657: gcc -o conftest -g -O2 -Iinclude -I/home/lfatton/Louttia/wolf3d/SDL2-2.0.9/include -idirafter /home/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/khronos   -Iinclude -I/home/lfatton/Louttia/wolf3d/SDL2-2.0.9/include -idirafter /home/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/khronos   conftest.c  >&5
-/tmp/ccCEVm2U.o: In function `main':
+/tmp/ccG7lFeb.o: In function `main':
 /home/lfatton/Louttia/wolf3d/SDL2-2.0.9/conftest.c:98: undefined reference to `_strlwr'
 collect2: error: ld returned 1 exit status
 configure:16657: $? = 1
@@ -1430,7 +1430,7 @@ configure:16657: $? = 0
 configure:16657: result: yes
 configure:16657: checking for itoa
 configure:16657: gcc -o conftest -g -O2 -Iinclude -I/home/lfatton/Louttia/wolf3d/SDL2-2.0.9/include -idirafter /home/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/khronos   -Iinclude -I/home/lfatton/Louttia/wolf3d/SDL2-2.0.9/include -idirafter /home/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/khronos   conftest.c  >&5
-/tmp/ccg9xM96.o: In function `main':
+/tmp/cc2BXblo.o: In function `main':
 /home/lfatton/Louttia/wolf3d/SDL2-2.0.9/conftest.c:101: undefined reference to `itoa'
 collect2: error: ld returned 1 exit status
 configure:16657: $? = 1
@@ -1542,7 +1542,7 @@ configure: failed program was:
 configure:16657: result: no
 configure:16657: checking for _ltoa
 configure:16657: gcc -o conftest -g -O2 -Iinclude -I/home/lfatton/Louttia/wolf3d/SDL2-2.0.9/include -idirafter /home/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/khronos   -Iinclude -I/home/lfatton/Louttia/wolf3d/SDL2-2.0.9/include -idirafter /home/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/khronos   conftest.c  >&5
-/tmp/ccsSX7na.o: In function `main':
+/tmp/ccoNC2tq.o: In function `main':
 /home/lfatton/Louttia/wolf3d/SDL2-2.0.9/conftest.c:101: undefined reference to `_ltoa'
 collect2: error: ld returned 1 exit status
 configure:16657: $? = 1
@@ -1654,7 +1654,7 @@ configure: failed program was:
 configure:16657: result: no
 configure:16657: checking for _uitoa
 configure:16657: gcc -o conftest -g -O2 -Iinclude -I/home/lfatton/Louttia/wolf3d/SDL2-2.0.9/include -idirafter /home/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/khronos   -Iinclude -I/home/lfatton/Louttia/wolf3d/SDL2-2.0.9/include -idirafter /home/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/khronos   conftest.c  >&5
-/tmp/ccA5ixGc.o: In function `main':
+/tmp/ccmgis1v.o: In function `main':
 /home/lfatton/Louttia/wolf3d/SDL2-2.0.9/conftest.c:101: undefined reference to `_uitoa'
 collect2: error: ld returned 1 exit status
 configure:16657: $? = 1
@@ -1766,7 +1766,7 @@ configure: failed program was:
 configure:16657: result: no
 configure:16657: checking for _ultoa
 configure:16657: gcc -o conftest -g -O2 -Iinclude -I/home/lfatton/Louttia/wolf3d/SDL2-2.0.9/include -idirafter /home/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/khronos   -Iinclude -I/home/lfatton/Louttia/wolf3d/SDL2-2.0.9/include -idirafter /home/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/khronos   conftest.c  >&5
-/tmp/cca7Moli.o: In function `main':
+/tmp/ccGRJ8jz.o: In function `main':
 /home/lfatton/Louttia/wolf3d/SDL2-2.0.9/conftest.c:101: undefined reference to `_ultoa'
 collect2: error: ld returned 1 exit status
 configure:16657: $? = 1
@@ -1886,7 +1886,7 @@ configure:16657: $? = 0
 configure:16657: result: yes
 configure:16657: checking for _i64toa
 configure:16657: gcc -o conftest -g -O2 -Iinclude -I/home/lfatton/Louttia/wolf3d/SDL2-2.0.9/include -idirafter /home/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/khronos   -Iinclude -I/home/lfatton/Louttia/wolf3d/SDL2-2.0.9/include -idirafter /home/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/khronos   conftest.c  >&5
-/tmp/ccJHqgLh.o: In function `main':
+/tmp/cctkorIy.o: In function `main':
 /home/lfatton/Louttia/wolf3d/SDL2-2.0.9/conftest.c:103: undefined reference to `_i64toa'
 collect2: error: ld returned 1 exit status
 configure:16657: $? = 1
@@ -2000,7 +2000,7 @@ configure: failed program was:
 configure:16657: result: no
 configure:16657: checking for _ui64toa
 configure:16657: gcc -o conftest -g -O2 -Iinclude -I/home/lfatton/Louttia/wolf3d/SDL2-2.0.9/include -idirafter /home/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/khronos   -Iinclude -I/home/lfatton/Louttia/wolf3d/SDL2-2.0.9/include -idirafter /home/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/khronos   conftest.c  >&5
-/tmp/ccZNey1j.o: In function `main':
+/tmp/ccp8U0YA.o: In function `main':
 /home/lfatton/Louttia/wolf3d/SDL2-2.0.9/conftest.c:103: undefined reference to `_ui64toa'
 collect2: error: ld returned 1 exit status
 configure:16657: $? = 1
@@ -2144,7 +2144,7 @@ configure:16657: $? = 0
 configure:16657: result: yes
 configure:16657: checking for _stricmp
 configure:16657: gcc -o conftest -g -O2 -Iinclude -I/home/lfatton/Louttia/wolf3d/SDL2-2.0.9/include -idirafter /home/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/khronos   -Iinclude -I/home/lfatton/Louttia/wolf3d/SDL2-2.0.9/include -idirafter /home/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/khronos   conftest.c  >&5
-/tmp/ccDgAhdF.o: In function `main':
+/tmp/ccZLoZQT.o: In function `main':
 /home/lfatton/Louttia/wolf3d/SDL2-2.0.9/conftest.c:109: undefined reference to `_stricmp'
 collect2: error: ld returned 1 exit status
 configure:16657: $? = 1
@@ -2271,7 +2271,7 @@ configure:16657: $? = 0
 configure:16657: result: yes
 configure:16657: checking for _strnicmp
 configure:16657: gcc -o conftest -g -O2 -Iinclude -I/home/lfatton/Louttia/wolf3d/SDL2-2.0.9/include -idirafter /home/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/khronos   -Iinclude -I/home/lfatton/Louttia/wolf3d/SDL2-2.0.9/include -idirafter /home/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/khronos   conftest.c  >&5
-/tmp/ccDDwW6I.o: In function `main':
+/tmp/ccXvIVfZ.o: In function `main':
 /home/lfatton/Louttia/wolf3d/SDL2-2.0.9/conftest.c:110: undefined reference to `_strnicmp'
 collect2: error: ld returned 1 exit status
 configure:16657: $? = 1
@@ -2441,7 +2441,7 @@ configure:16657: $? = 0
 configure:16657: result: yes
 configure:16657: checking for sysctlbyname
 configure:16657: gcc -o conftest -g -O2 -Iinclude -I/home/lfatton/Louttia/wolf3d/SDL2-2.0.9/include -idirafter /home/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/khronos   -Iinclude -I/home/lfatton/Louttia/wolf3d/SDL2-2.0.9/include -idirafter /home/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/khronos   conftest.c  >&5
-/tmp/cc1Phrjf.o: In function `main':
+/tmp/ccbly1qz.o: In function `main':
 /home/lfatton/Louttia/wolf3d/SDL2-2.0.9/conftest.c:120: undefined reference to `sysctlbyname'
 collect2: error: ld returned 1 exit status
 configure:16657: $? = 1
@@ -3939,7 +3939,7 @@ configure:23324: $? = 0
 configure:23330: result: yes
 configure:23334: checking for dlopen in -lc
 configure:23359: gcc -o conftest -g -O2 -Iinclude -I/home/lfatton/Louttia/wolf3d/SDL2-2.0.9/include -idirafter /home/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/khronos   -Iinclude -I/home/lfatton/Louttia/wolf3d/SDL2-2.0.9/include -idirafter /home/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/khronos   conftest.c -lc   -lm >&5
-/tmp/ccAgHSnQ.o: In function `main':
+/tmp/ccEzzEg9.o: In function `main':
 /home/lfatton/Louttia/wolf3d/SDL2-2.0.9/conftest.c:143: undefined reference to `dlopen'
 collect2: error: ld returned 1 exit status
 configure:23359: $? = 1
@@ -9121,7 +9121,7 @@ configure:22964: $? = 0
 configure:22978: result: yes
 configure:22981: checking for pthread_set_name_np
 configure:23001: gcc -o conftest -g -O2 -Iinclude -I/home/lfatton/Louttia/wolf3d/SDL2-2.0.9/include -idirafter /home/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/khronos   -D_REENTRANT  -Iinclude -I/home/lfatton/Louttia/wolf3d/SDL2-2.0.9/include -idirafter /home/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/khronos    conftest.c  -lm -lpthread >&5
-/tmp/ccgflvnG.o: In function `main':
+/tmp/ccw8UR42.o: In function `main':
 /home/lfatton/Louttia/wolf3d/SDL2-2.0.9/conftest.c:164: undefined reference to `pthread_set_name_np'
 collect2: error: ld returned 1 exit status
 configure:23001: $? = 1

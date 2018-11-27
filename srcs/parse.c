@@ -14,13 +14,5 @@
 
 void	parse(t_env *e, int fd)
 {
-	char	*line;
-	int		y;
-
-	y = 0;
-	e->help = 0;
-	while (get_next_line(fd, &line))
-	{
-		y++;
-	}
+	e->help = fd;
 }

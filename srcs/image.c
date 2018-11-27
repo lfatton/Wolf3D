@@ -14,10 +14,9 @@
 
 void			create_image(t_env *e)
 {
-
-	e->help = 0;
-//	e->img->ptr = mlx_new_image(e->mlx_ptr, WIN_W, WIN_H);
-//	e->img->str = (int*)mlx_get_data_addr(e->img->ptr, &bpp, &s_l, &endian);
+ 	SDL_SetRenderDrawColor(e->render, 0, 0, 0, 255);
+ 	SDL_RenderClear(e->render);
+	SDL_RenderPresent(e->render);
 }
 
 static void		*threading(t_thrds *wolf_thrds)

@@ -12,26 +12,34 @@
 
 #include "wolf3d.h"
 
+void		events_loop(t_env *e)
+{
+	SDL_Event	event;
+
+	while (1)
+		while (SDL_PollEvent(&event))
+			if (event.type == SDL_QUIT || event.key.keysym.scancode == SDL_SCANCODE_ESCAPE)
+				quit_wolf(e);
+}
+
 int			main(int ac, char **av)
 {
 	int		fd;
 	t_env	*e;
 
-	e = (t_env*)malloc(sizeof(t_env));
-	e->img = (t_img*)malloc(sizeof(t_img));
-	e->p = (t_point*)malloc(sizeof(t_point));
+	if (!(e = (t_env*)malloc(sizeof(t_env))))
+		error_wolf("error: cannot allocate memory");
+	if (!(e->img = (t_img*)malloc(sizeof(t_img))))
+		error_wolf("error: cannot allocate memory");
+	if (!(e->p = (t_point*)malloc(sizeof(t_point))))
+		error_wolf("error: cannot allocate memory");
 	if (ac != 2)
 		error_wolf("usage: ./wolf3d input_file");
 	fd = open(av[1], O_RDONLY);
 	parse(e, fd);
 	close(fd);
 	init_wolf(e);
-//	mlx_expose_hook(e->win_ptr, expose_hook, e);
-//	mlx_hook(e->win_ptr, 2, 5, key_hook, e);
-//	mlx_hook(e->win_ptr, 4, 1L << 2, mouse_hook, e);
-//	mlx_hook(e->win_ptr, 6, 1L << 6, mouse_motion, e);
-//	mlx_hook(e->win_ptr, 17, 1L << 17, quit_wolf, e);
-//	mlx_loop(e->mlx_ptr);
+	events_loop(e);
 	pthread_exit(NULL);
 	return (EXIT_SUCCESS);
 }
