@@ -13,7 +13,7 @@
 #ifndef WOLF3D_H
 # define WOLF3D_H
 
-# include "mlx.h"
+# include "SDL.h"
 # include "libft.h"
 
 # include <unistd.h>

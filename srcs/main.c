@@ -26,12 +26,12 @@ int			main(int ac, char **av)
 	parse(e, fd);
 	close(fd);
 	init_wolf(e);
-	mlx_expose_hook(e->win_ptr, expose_hook, e);
-	mlx_hook(e->win_ptr, 2, 5, key_hook, e);
-	mlx_hook(e->win_ptr, 4, 1L << 2, mouse_hook, e);
-	mlx_hook(e->win_ptr, 6, 1L << 6, mouse_motion, e);
-	mlx_hook(e->win_ptr, 17, 1L << 17, quit_wolf, e);
-	mlx_loop(e->mlx_ptr);
+//	mlx_expose_hook(e->win_ptr, expose_hook, e);
+//	mlx_hook(e->win_ptr, 2, 5, key_hook, e);
+//	mlx_hook(e->win_ptr, 4, 1L << 2, mouse_hook, e);
+//	mlx_hook(e->win_ptr, 6, 1L << 6, mouse_motion, e);
+//	mlx_hook(e->win_ptr, 17, 1L << 17, quit_wolf, e);
+//	mlx_loop(e->mlx_ptr);
 	pthread_exit(NULL);
 	return (EXIT_SUCCESS);
 }

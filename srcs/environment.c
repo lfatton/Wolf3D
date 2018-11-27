@@ -20,8 +20,8 @@ void	error_wolf(char *err)
 
 int		quit_wolf(t_env *e)
 {
-	mlx_destroy_image(e->mlx_ptr, e->img->ptr);
-	mlx_destroy_window(e->mlx_ptr, e->win_ptr);
+//	mlx_destroy_image(e->mlx_ptr, e->img->ptr);
+//	mlx_destroy_window(e->mlx_ptr, e->win_ptr);
 	free(e->p);
 	free(e->img);
 	free(e);
@@ -31,8 +31,8 @@ int		quit_wolf(t_env *e)
 
 void	init_wolf(t_env *e)
 {
-	e->mlx_ptr = mlx_init();
-	e->win_ptr = mlx_new_window(e->mlx_ptr, WIN_W, WIN_H, "Wolf3D");
-	mlx_do_key_autorepeaton(e->mlx_ptr);
+//	e->mlx_ptr = mlx_init();
+//	e->win_ptr = mlx_new_window(e->mlx_ptr, WIN_W, WIN_H, "Wolf3D");
+//	mlx_do_key_autorepeaton(e->mlx_ptr);
 	create_image(e);
 }

@@ -37,8 +37,8 @@ int	mouse_motion(int x, int y, t_env *e)
 
 int	expose_hook(t_env *e)
 {
-	mlx_clear_window(e->mlx_ptr, e->win_ptr);
+//	mlx_clear_window(e->mlx_ptr, e->win_ptr);
 	print_image(e);
-	mlx_put_image_to_window(e->mlx_ptr, e->win_ptr, e->img->ptr, 0, 0);
+//	mlx_put_image_to_window(e->mlx_ptr, e->win_ptr, e->img->ptr, 0, 0);
 	return (0);
 }

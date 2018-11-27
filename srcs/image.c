@@ -14,12 +14,10 @@
 
 void			create_image(t_env *e)
 {
-	int		bpp;
-	int		s_l;
-	int		endian;
 
-	e->img->ptr = mlx_new_image(e->mlx_ptr, WIN_W, WIN_H);
-	e->img->str = (int*)mlx_get_data_addr(e->img->ptr, &bpp, &s_l, &endian);
+	e->help = 0;
+//	e->img->ptr = mlx_new_image(e->mlx_ptr, WIN_W, WIN_H);
+//	e->img->str = (int*)mlx_get_data_addr(e->img->ptr, &bpp, &s_l, &endian);
 }
 
 static void		*threading(t_thrds *wolf_thrds)

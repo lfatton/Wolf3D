@@ -34,23 +34,15 @@ INCL_NAME = wolf3d.h
 
 INCL_PATH = includes
 
-ifeq ($(shell uname), Darwin)
-	MLX_NAME = minilibx_macos
-	MLX_INCL_PATH = ./minilibx_macos
-	LDLMX = -L ./minilibx_macos -lmlx
-	MLXFLAGS = -framework OpenGL -framework AppKit
-else
-	MLX_NAME = minilibx_linux
-	MLX_INCL_PATH = ./minilibx_linux
-	LDLMX = -L ./minilibx_linux -lmlx
-	MLXFLAGS = -lXext -lX11
-endif
+SDL_NAME = SDL2-2.0.9
 
 LIBFT_INCL_PATH = ./libft/includes
 
+SDL_INCL_PATH = ./$(SDL_NAME)/include
+
 INCL = $(addprefix $(INCL_PATH)/,$(INCL_NAME))
 
-IFLAGS = -I $(INCL_PATH) -I $(LIBFT_INCL_PATH) -I $(MLX_INCL_PATH)
+IFLAGS = -I $(INCL_PATH) -I $(LIBFT_INCL_PATH) -I $(SDL_INCL_PATH)
 
 LDLIBFT = -L ./libft -lft
 
@@ -65,9 +57,9 @@ RM = rm -rf
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@$(MAKE) -C $(MLX_NAME)
+	@cd $(SDL_NAME) ; ./configure ; $(MAKE) ; sudo $(MAKE) install
 	@$(MAKE) -C libft
-	@$(CC) $(OBJS) $(LDLIBFT) $(LDLMX) $(MLXFLAGS) $(LIBS) -o $@
+	@$(CC) $(OBJS) $(LDLIBFT) $(LIBS) -o $@
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INCL)
 	@mkdir $(OBJ_PATH) 2> /dev/null || true
@@ -90,6 +82,6 @@ clean:
 fclean: clean
 	@$(RM) $(NAME)
 	@$(MAKE) -C libft fclean
-	@$(MAKE) -C $(MLX_NAME) clean
+	@$(MAKE) -C $(SDL_NAME) clean
 
 re: fclean all
