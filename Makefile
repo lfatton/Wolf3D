@@ -20,7 +20,6 @@ SRC_NAME =	main.c \
 			parse.c \
 			environment.c \
 			image.c \
-			hooks.c \
 
 SRCS = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 

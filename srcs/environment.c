@@ -34,7 +34,7 @@ void	init_wolf(t_env *e)
 {
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
 		error_wolf("error: cannot run SDL");
-	if (SDL_CreateWindowAndRenderer(WIN_W, WIN_H, 0, &e->win, &e->render))
+	if (SDL_CreateWindowAndRenderer(WIN_W, WIN_H, SDL_WINDOW_FULLSCREEN_DESKTOP, &e->win, &e->render))
 		error_wolf("error: cannot create window");
 	create_image(e);
 }
