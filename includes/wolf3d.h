@@ -36,12 +36,6 @@
 # define ZOOM_OUT 5
 # define ZOOM_LOCK 2
 
-# if __APPLE__
-#  include "macos_keys.h"
-# else
-#  include "linux_keys.h"
-# endif
-
 typedef struct	s_img
 {
 	void		*ptr;
