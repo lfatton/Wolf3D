@@ -6,7 +6,7 @@
 #    By: lfatton <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/30 00:05:23 by lfatton           #+#    #+#              #
-#    Updated: 2018/11/26 18:19:44 by lfatton          ###   ########.fr        #
+#    Updated: 2018/11/28 20:35:17 by lfatton          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,21 +51,24 @@ CC = clang
 
 CFLAGS = -Wall -Werror -Wextra -g
 
+ifeq ($(shell uname), Darwin)
+	CONFIGURE_SDL = cd $(SDL_NAME) ; ./configure --prefix="/Users/lfatton/42"; $(MAKE) ; $(MAKE) install
+else
+	CONFIGURE_SDL = cd $(SDL_NAME) ; ./configure ; $(MAKE) ; sudo $(MAKE) install
+endif
+
 RM = rm -rf
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@if [ ! -d "./$(SDL_NAME)/build" ] ; then $(MAKE) sdl2 ; fi
+	@if [ ! -d "./$(SDL_NAME)/build" ] ; then $(CONFIGURE_SDL) ; fi
 	@$(MAKE) -C libft
 	@$(CC) $(OBJS) $(LDLIBFT) $(LIBS) -o $@
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INCL)
 	@mkdir $(OBJ_PATH) 2> /dev/null || true
 	@$(CC) $(CFLAGS) $(IFLAGS) -o $@ -c $<
-
-sdl2:
-	@cd $(SDL_NAME) ; ./configure ; $(MAKE) ; sudo $(MAKE) install
 
 run: $(NAME)
 	./$(NAME) $(NAME)
