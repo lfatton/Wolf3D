@@ -6,7 +6,7 @@
 #    By: lfatton <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/30 00:05:23 by lfatton           #+#    #+#              #
-#    Updated: 2018/11/28 20:35:17 by lfatton          ###   ########.fr        #
+#    Updated: 2018/11/29 20:47:38 by lfatton          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,17 +45,21 @@ IFLAGS = -I $(INCL_PATH) -I $(LIBFT_INCL_PATH) -I $(SDL_INCL_PATH)
 
 LDLIBFT = -L ./libft -lft
 
-LIBS = -lm -lpthread -lSDL2
+LIBS = -lm -lpthread
 
 CC = clang
 
-CFLAGS = -Wall -Werror -Wextra -g
+CFLAGS = -Wall -Werror -Wextra
 
 ifeq ($(shell uname), Darwin)
-	CONFIGURE_SDL = cd $(SDL_NAME) ; ./configure --prefix="/Users/lfatton/42"; $(MAKE) ; $(MAKE) install
+	CONFIGURE_SDL = cd $(SDL_NAME) ; ./configure --prefix="/Users/lfatton/Louttia/wolf3d/$(SDL_NAME)"; $(MAKE) ; $(MAKE) install
 else
 	CONFIGURE_SDL = cd $(SDL_NAME) ; ./configure ; $(MAKE) ; sudo $(MAKE) install
 endif
+
+SDL_LDFLAGS := $(shell cd $(SDL_NAME) ; ./sdl2-config --libs)
+
+SDL_CFLAGS :=  $(shell cd $(SDL_NAME) ; ./sdl2-config --cflags)
 
 RM = rm -rf
 
@@ -64,11 +68,11 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	@if [ ! -d "./$(SDL_NAME)/build" ] ; then $(CONFIGURE_SDL) ; fi
 	@$(MAKE) -C libft
-	@$(CC) $(OBJS) $(LDLIBFT) $(LIBS) -o $@
+	@$(CC) $(OBJS) $(LDLIBFT) $(LIBS) $(SDL_LDFLAGS) -o $@
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INCL)
 	@mkdir $(OBJ_PATH) 2> /dev/null || true
-	@$(CC) $(CFLAGS) $(IFLAGS) -o $@ -c $<
+	@$(CC) $(CFLAGS) $(IFLAGS) $(SDL_CFLAGS) -o $@ -c $<
 
 run: $(NAME)
 	./$(NAME) $(NAME)
