@@ -6,7 +6,7 @@
 /*   By: lfatton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 17:37:43 by lfatton           #+#    #+#             */
-/*   Updated: 2018/11/26 18:18:26 by lfatton          ###   ########.fr       */
+/*   Updated: 2018/12/03 18:51:47 by lfatton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,14 @@
 # include <fcntl.h>
 # include <math.h>
 # include <pthread.h>
+#include <stdio.h>
 
 # define THREADS 16
-# define WIN_W 800
-# define WIN_H 600
-# define BPP 32
+# define WIN_W 320
+# define WIN_H 200
+# define FOV 60
+# define BLOCK 64
+# define CAM_H BLOCK / 2
 
 # define LEFT_BUTTON 1
 # define RIGHT_BUTTON 3
@@ -36,46 +39,39 @@
 # define ZOOM_OUT 5
 # define ZOOM_LOCK 2
 
-typedef struct	s_img
+typedef struct		s_cam
 {
-	void		*ptr;
-	int			*str;
-	double		zoom;
-}				t_img;
+	double			pos_x;
+	double			pos_y;
+}					t_cam;
 
-typedef struct	s_point
+typedef struct		s_env
 {
-	double		x;
-	double		y;
-}				t_point;
-
-typedef struct	s_env
-{
-	SDL_Window	*win;
+	SDL_Window		*win;
 	SDL_Renderer	*render;
-	int			help;
-	t_img		*img;
-	t_point		*p;
-}				t_env;
+	int				quit;
+	double			time;
+	double			prev_time;
+	double			fps;
+	t_cam			*cam;
+}					t_env;
 
-typedef struct	s_thrds
+typedef struct		s_thrds
 {
-	t_env		*e;
-	int			i;
-}				t_thrds;
+	t_env			*e;
+	int				i;
+}					t_thrds;
 
-void			parse(t_env *e, int fd);
+void				error_wolf(char *err);
+int					quit_wolf(t_env *e);
+void				init_wolf(t_env *e);
 
-void			error_wolf(char *err);
-int				quit_wolf(t_env *e);
-void			init_wolf(t_env *e);
+void				create_image(t_env *e);
+void				print_image(t_env *e);
 
-void			create_image(t_env *e);
-void			print_image(t_env *e);
-
-int				key_hook(int key, t_env *e);
-int				mouse_hook(int btn, int x, int y, t_env *e);
-int				mouse_motion(int x, int y, t_env *e);
-int				expose_hook(t_env *e);
+int					key_hook(int key, t_env *e);
+int					mouse_hook(int btn, int x, int y, t_env *e);
+int					mouse_motion(int x, int y, t_env *e);
+int					expose_hook(t_env *e);
 
 #endif

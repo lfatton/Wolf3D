@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   image.c                                            :+:      :+:    :+:   */
+/*   ft_degtorad.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfatton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/26 17:53:56 by lfatton           #+#    #+#             */
-/*   Updated: 2018/12/03 17:04:14 by lfatton          ###   ########.fr       */
+/*   Created: 2018/12/03 16:02:59 by lfatton           #+#    #+#             */
+/*   Updated: 2018/12/03 16:06:31 by lfatton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
+#include <math.h>
 
-void			create_image(t_env *e)
+double	ft_degtorad(double value)
 {
-	SDL_SetRenderDrawColor(e->render, 0, 0, 0, 255);
-	SDL_RenderClear(e->render);
-	SDL_RenderPresent(e->render);
+	return (value * M_PI / 180);
 }

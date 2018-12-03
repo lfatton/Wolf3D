@@ -6,7 +6,7 @@
 #    By: lfatton <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/06 18:00:44 by lfatton           #+#    #+#              #
-#    Updated: 2018/06/28 15:41:47 by lfatton          ###   ########.fr        #
+#    Updated: 2018/12/03 16:12:54 by lfatton          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,8 +36,10 @@ SRC_NAME = ft_putchar.c \
 		   ft_strstr.c \
 		   ft_strnstr.c \
 		   ft_abs.c \
-		   ft_pow.c \
 		   ft_dabs.c \
+		   ft_pow.c \
+		   ft_degtorad.c \
+		   ft_radtodeg.c \
 		   ft_isspace.c \
 		   ft_isblank.c \
 		   ft_isalpha.c \
@@ -106,32 +108,34 @@ OBJS = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
 
 INCLS = ./includes/
 
-CC = gcc
+CC = clang
 
 CFLAGS = -Wall -Werror -Wextra -I $(INCLS) -c -o
+
+LIBS = -lm
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	ar rc $@ $^ 
-	ranlib $@
+	@ar rc $@ $^
+	@ranlib $@
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
 	@mkdir $(OBJ_PATH) 2> /dev/null || true
-	$(CC) $(CFLAGS) $@ $^
+	@$(CC) $(CFLAGS) $@ $^
 
 norm:
-	norminette $(SRCS) $(INCLS)
+	@norminette $(SRCS) $(INCLS)
 
 git: clean
-	git add -A
-	git status
+	@git add -A
+	@git status
 
 clean:
-	rm -rf $(OBJS)
+	@rm -rf $(OBJS)
 	@rmdir $(OBJ_PATH) 2> /dev/null || true
 
 fclean: clean
-	rm -rf $(NAME)
+	@rm -rf $(NAME)
 
 re: fclean all

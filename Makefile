@@ -6,7 +6,7 @@
 #    By: lfatton <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/30 00:05:23 by lfatton           #+#    #+#              #
-#    Updated: 2018/11/29 20:47:38 by lfatton          ###   ########.fr        #
+#    Updated: 2018/12/03 18:48:56 by lfatton          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,6 @@ NAME = wolf3d
 SRC_PATH = srcs
 
 SRC_NAME =	main.c \
-			parse.c \
 			environment.c \
 			image.c \
 
@@ -75,14 +74,14 @@ $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INCL)
 	@$(CC) $(CFLAGS) $(IFLAGS) $(SDL_CFLAGS) -o $@ -c $<
 
 run: $(NAME)
-	./$(NAME) $(NAME)
+	@./$(NAME) $(NAME)
 
 norm:
-	norminette $(SRCS) $(INCL)
+	@norminette $(SRCS) $(INCL)
 
 git: fclean
-	git add -A
-	git status
+	@git add -A
+	@git status
 
 clean:
 	@$(RM) $(OBJS)

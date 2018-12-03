@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   ft_radtodeg.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfatton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/26 18:10:15 by lfatton           #+#    #+#             */
-/*   Updated: 2018/11/26 18:22:42 by lfatton          ###   ########.fr       */
+/*   Created: 2018/12/03 16:06:55 by lfatton           #+#    #+#             */
+/*   Updated: 2018/12/03 16:07:43 by lfatton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
+#include <math.h>
 
-void	parse(t_env *e, int fd)
+double	ft_degtorad(double value)
 {
-	e->help = fd;
+	return (value * 180 / M_PI);
 }
