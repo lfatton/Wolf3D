@@ -6,7 +6,7 @@
 #    By: lfatton <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/06 18:00:44 by lfatton           #+#    #+#              #
-#    Updated: 2018/12/03 16:12:54 by lfatton          ###   ########.fr        #
+#    Updated: 2018/12/20 22:45:01 by lfatton          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ SRC_NAME = ft_putchar.c \
 		   ft_strnstr.c \
 		   ft_abs.c \
 		   ft_dabs.c \
-		   ft_pow.c \
+		   ft_sq.c \
 		   ft_degtorad.c \
 		   ft_radtodeg.c \
 		   ft_isspace.c \

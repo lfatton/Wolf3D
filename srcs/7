@@ -6,7 +6,7 @@
 /*   By: lfatton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 17:52:06 by lfatton           #+#    #+#             */
-/*   Updated: 2018/12/28 00:44:05 by lfatton          ###   ########.fr       */
+/*   Updated: 2018/12/27 19:31:12 by lfatton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ printf("%f", 1.0 / e->fps);
 	}
 }
 
-wr6snd5arzJfstatic void		draw_left_h(t_env *e, double x1)
+static void		draw_left_h(t_env *e, double x1)
 {
 	int	x;
 	double y2;
@@ -103,7 +103,7 @@ static void		draw_up_v(t_env *e, double x1)
 	int	y;
 	double y2;
 	double x2 = x1;
-	y = e->end;,
+	y = e->end;
 	y2 = e->end;
 	double y1 = e->y;
 	while (y <= y1)
@@ -217,50 +217,38 @@ double	raycast_ver(t_env *e)
 {
 	e->r->hit = 0;
 	if (e->r->angle == SOUTH || e->r->angle == NORTH)
-		return (MAX_DIST);
+		return (WIN_H * TILE);
 	if (e->r->angle > NORTH && e->r->angle < SOUTH)
 	{
 		e->r->step_x = -TILE;
 		e->r->dist_x = (int)(e->p->pos_x / TILE) * TILE - TILE;
 		e->r->dist_y = e->p->pos_y + (e->p->pos_x - e->r->dist_x) * tan(ft_degtorad(e->r->angle));
 	}
-	else if (e->r->angle < NORTH || e->r->angle > SOUTH)
+	else if (e->r->angle < NORTH ||  e->r->angle > SOUTH)
 	{
 		e->r->step_x = TILE;
 		e->r->dist_x = (int)(e->p->pos_x / TILE) * TILE + TILE;
-		if (e->r->angle > SOUTH)
-			e->r->dist_y = e->p->pos_y + (e->r->dist_x - e->p->pos_x) * tan(ft_degtorad(360 - e->r->angle));
-		else
+		if (e->r->angle >= EAST)
 			e->r->dist_y = e->p->pos_y - (e->r->dist_x - e->p->pos_x) * tan(ft_degtorad(e->r->angle));
+		else
+			e->r->dist_y = e->p->pos_y + (e->r->dist_x - e->p->pos_x) * tan(ft_degtorad(e->r->angle));
 	}
-	if (e->r->angle == EAST || e->r->angle == WEST)
-		e->r->step_y = 0;
-	else if (e->r->angle > WEST)
-		e->r->step_y = e->r->step_x * tan(ft_degtorad(360 - e->r->angle));
-	else
-		e->r->step_y = e->r->step_x * tan(ft_degtorad(e->r->angle));
+	e->r->step_y = e->r->step_x / tan(ft_degtorad(e->r->angle));
+		
 	while (!e->r->hit)
 	{
 		e->m->x = floor(e->r->dist_x / TILE);
-		e->m->y = floor(e->r->dist_y / TILE);
-		if (e->m->x > e->m->w || e->m->y > e->m->h || e->r->dist_x < 0 || e->r->dist_y < 0)
-			return (MAX_DIST);
+		e->m->y = floor(e->r->dist_y / (double)TILE) + 1;
+		//if (e->m->x >
 		if (m[e->m->y][e->m->x] > 0) 
 			e->r->hit = 1;
+	if (e->r->angle < 28.0 || e->r->angle <= 18.5)
+printf("step_x %f step_y %f dist_x %f dist_y %f e->m->x %d e->m->y %d0\n", e->r->step_x, e->r->step_y, e->r->dist_x, e->r->dist_y, e->m->x, e->m->y);
 		e->r->dist_x += e->r->step_x;
 		e->r->dist_y += e->r->step_y;
 	}
-	if (e->r->angle < 346.3 && e->r->angle > 344.8)
-printf("HOR step_x %f step_y %f dist_x %f dist_y %f e->m->x %d e->m->y %d\n", e->r->step_x, e->r->step_y, e->r->dist_x, e->r->dist_y, e->m->x, e->m->y);
-//	if (e->r->angle < 71.3 && e->r->angle > 41.8)
-//printf("VER step_x %f step_y %f dist_x %f dist_y %f e->m->x %d e->m->y %d ANG %f\n\n", e->r->step_x, e->r->step_y, e->r->dist_x, e->r->dist_y, e->m->x, e->m->y, 360-e->r->angle);
-	return (sqrt(ft_sq(ft_dabs(e->p->pos_x - e->r->dist_x)) + ft_sq(ft_dabs(e->p->pos_y - e->r->dist_y))));
-	if (e->r->angle > WEST)
-		return (ft_dabs(e->p->pos_y - e->r->dist_y) / sin(ft_degtorad(360 - e->r->angle)));
 	return (ft_dabs(e->p->pos_y - e->r->dist_y) / sin(ft_degtorad(e->r->angle)));
 	/*double dist_y;
-	if (e->r->angle < 28.0 || e->r->angle <= 18.5)
-printf("step_x %f step_y %f dist_x %f dist_y %f e->m->x %d e->m->y %d\n", e->r->step_x, e->r->step_y, e->r->dist_x, e->r->dist_y, e->m->x, e->m->y);
 	if (e->r->angle < NORTH || e->r->angle > SOUTH)
 	{
 		e->r->step_x = TILE;
@@ -292,7 +280,7 @@ double	raycast_hor(t_env *e)
 {
 	e->r->hit = 0;
 	if (e->r->angle == EAST || e->r->angle == WEST)
-		return (MAX_DIST);
+		return (WIN_W * TILE);
 	if (e->r->angle > EAST && e->r->angle < WEST)
 	{
 		e->r->step_y = -TILE;
@@ -303,29 +291,21 @@ double	raycast_hor(t_env *e)
 	{
 		e->r->step_y = TILE;
 		e->r->dist_y = (int)(e->p->pos_y / TILE) * TILE + TILE;
-		e->r->dist_x = e->p->pos_x + (e->r->dist_y - e->p->pos_y) / tan(ft_degtorad(360 - e->r->angle));
+		e->r->dist_x = e->p->pos_x + (e->r->dist_y - e->p->pos_y) * tan(ft_degtorad(90 - e->r->angle));
 	}
-	if (e->r->angle == NORTH || e->r->angle == SOUTH)
-		e->r->step_x = 0;
-	else if (e->r->angle > WEST)
-		e->r->step_x = e->r->step_y / tan(ft_degtorad(360 - e->r->angle));
-	else
-		e->r->step_x = e->r->step_y / tan(ft_degtorad(e->r->angle));
+	e->r->step_x = e->r->step_y / tan(ft_degtorad(e->r->angle));
+	//printf("distx disty %f %f \n", e->r->dist_x, e->r->dist_y);	
 	while (!e->r->hit)
 	{
-		e->m->x = floor(e->r->dist_x / TILE);
-		e->m->y = floor(e->r->dist_y / TILE);
-		if (e->m->x > e->m->w || e->m->y > e->m->h || e->r->dist_x < 0 || e->r->dist_y < 0)
-			return (MAX_DIST);
+		e->m->x = (int)(e->r->dist_x / TILE);
+		e->m->y = (int)(e->r->dist_y / TILE);
 		if (m[e->m->y][e->m->x] > 0) 
 			e->r->hit = 1;
 		e->r->dist_x += e->r->step_x;
 		e->r->dist_y += e->r->step_y;
 	}
-	if (e->r->angle > WEST)
-		return (ft_dabs(e->p->pos_x - e->r->dist_x) / cos(ft_degtorad(360 - e->r->angle)));
-	return (ft_dabs(e->p->pos_x - e->r->dist_x) / cos(ft_degtorad(e->r->angle)));
-	/*double dist_x;111
+	return (ft_dabs(e->p->pos_y - e->r->dist_y) / sin(ft_degtorad(e->r->angle)));
+	/*double dist_x;
 	if (e->r->angle > EAST && e->r->angle < WEST)
 	{
 		e->r->step_y = -TILE;
@@ -385,13 +365,12 @@ void	raycasting(t_env *e)
 	while (x < WIN_W)
 	{
 		e->r->angle = e->p->card + FOV / 2 - (INCR * x);
-		e->r->angle += (e->r->angle < 0) ? 360 : 0;
-		e->r->angle -= (e->r->angle >= 360) ? 360 : 0;
+	//printf("angle %f %d %f\n", e->r->angle, x, INCR);	
 		res_h = raycast_hor(e);
 		res_v = raycast_ver(e);
 		printf("x %d angle %f resh %f ", x, e->r->angle,  res_h);
 		printf(" resv %f ", res_v);
-		if (res_h < res_v || res_v == 0)
+		if (res_h < res_v)
 		{
 			e->color = GREEN;
 			e->r->length = res_h;
@@ -404,10 +383,10 @@ void	raycasting(t_env *e)
 		draw_ceil(e);
 		draw_floor(e);
       		e->r->line_h = TILE / e->r->length * DIST;
-		printf("d %f l %f col %d\n",e->r->length,  e->r->line_h, e->color);
+		printf("DIST %f length %f\n",DIST,  e->r->line_h);
       		y = HALF_H - e->r->line_h / 2;
       		e->end = e->r->line_h + y;
-//	printf("start %d ",y);
+	printf("start %d ",y);
 		if (y < 0)
       			y = 0;
       		if (e->end >= WIN_H)
@@ -417,8 +396,10 @@ void	raycasting(t_env *e)
 			e->pix[x + y * WIN_W] = e->color;
 			y++;
 		}
-//	printf("end %d\n",e->end);
+	printf("end %d\n",e->end);
 		x++;
+
+
 //double fov = (FOV) ;
 //double ray_step = fov / (double) WIN_W;
 	//	e->r->angle = e->p->card - ANGLE30;
@@ -490,9 +471,9 @@ void	raycasting(t_env *e)
 void	init_player(t_env *e)
 {
 	//e->p->height = TILE / 2;
-	e->p->pos_x = 9 * TILE;
-	e->p->pos_y = 16 * TILE;
-	e->p->card = 0;
+	e->p->pos_x = 1 * TILE;
+	e->p->pos_y = 2 * TILE;
+	e->p->card = EAST;
 
 	/*e->p->pos_x = 13;
 	e->p->pos_y = 8;
