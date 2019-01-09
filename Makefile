@@ -6,7 +6,7 @@
 #    By: lfatton <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/30 00:05:23 by lfatton           #+#    #+#              #
-#    Updated: 2018/12/03 18:48:56 by lfatton          ###   ########.fr        #
+#    Updated: 2019/01/10 00:06:22 by lfatton          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ SRC_PATH = srcs
 
 SRC_NAME =	main.c \
 			environment.c \
-			image.c \
+			raycasting.c \
+			draw.c \
 
 SRCS = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 

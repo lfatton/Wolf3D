@@ -6,7 +6,7 @@
 /*   By: lfatton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 17:47:49 by lfatton           #+#    #+#             */
-/*   Updated: 2018/12/21 06:34:46 by lfatton          ###   ########.fr       */
+/*   Updated: 2019/01/10 00:08:06 by lfatton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,15 @@ void		loop_wolf(t_env *e)
 	while (!e->quit)
 	{
 		raycasting(e);
-		create_image(e);
-		while (SDL_WaitEvent(&event))
+		print_image(e);
+		while (SDL_PollEvent(&event))
 		{
 			if ((event.type == SDL_QUIT || event.key.keysym.scancode == SDL_SCANCODE_ESCAPE) && (e->quit = 1))
 				quit_wolf(e);
+			if (event.key.keysym.scancode == SDL_SCANCODE_LEFT)
+				e->p->vis += 5;
+			if (event.key.keysym.scancode == SDL_SCANCODE_RIGHT)
+				e->p->vis -= 5;
 		}
 	}
 }
@@ -44,10 +48,8 @@ int			main(int ac, char **av)
 	if (ac != 2)
 		error_wolf("usage: ./wolf3d input_file");
 	fd = open(av[1], O_RDONLY);
-	//parse(e, fd);
 	close(fd);
 	init_wolf(e);
 	loop_wolf(e);
-	pthread_exit(NULL);
 	return (EXIT_SUCCESS);
 }
