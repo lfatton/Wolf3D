@@ -6,7 +6,7 @@
 #    By: lfatton <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/30 00:05:23 by lfatton           #+#    #+#              #
-#    Updated: 2019/01/10 00:06:22 by lfatton          ###   ########.fr        #
+#    Updated: 2019/01/10 15:35:51 by lfatton          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRC_NAME =	main.c \
 			environment.c \
 			raycasting.c \
 			draw.c \
+			motion.c \
 
 SRCS = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 

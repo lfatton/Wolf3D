@@ -6,7 +6,7 @@
 /*   By: lfatton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 23:54:09 by lfatton           #+#    #+#             */
-/*   Updated: 2019/01/10 00:09:48 by lfatton          ###   ########.fr       */
+/*   Updated: 2019/01/10 14:48:57 by lfatton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,14 @@ void	draw(t_env *e)
       		e->y = 0;
       	if (e->end >= WIN_H)
       		e->end = WIN_H - 1;
-	e->color = GRAY;
+	if (e->hori && e->r->ang > EAST && e->r->ang < WEST)
+		e->color = LIGHTGRAY;
+	else if (!e->hori && (e->r->ang < NORTH || e->r->ang > SOUTH))
+		e->color = SILVER;
+	else if (e->hori && e->r->ang >=  WEST)
+		e->color = DARKGRAY;
+	else if (!e->hori && e->r->ang >= NORTH && e->r->ang <= SOUTH)
+		e->color = GRAY;
 	draw_line(e);
 }
 

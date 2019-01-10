@@ -6,7 +6,7 @@
 /*   By: lfatton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 17:37:43 by lfatton           #+#    #+#             */
-/*   Updated: 2019/01/10 00:12:17 by lfatton          ###   ########.fr       */
+/*   Updated: 2019/01/10 16:07:09 by lfatton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # define HALF_H WIN_H / 2
 # define FOV 60.0
 # define TILE 64
+# define SPEED 5
 # define DECR_ANG FOV / (double)WIN_W
 # define RATIO TILE * (HALF_W / tan(ft_degtorad(FOV / 2)))
 
@@ -43,6 +44,9 @@
 # define SKYBLUE 0x0EC0EE
 # define BROWN 0x452209
 # define GRAY 0x808080
+# define SILVER 0xC0C0C0
+# define DARKGRAY 0xA9A9A9
+# define LIGHTGRAY 0xD3D3D3
 
 # define NORTH 90
 # define SOUTH 270
@@ -99,6 +103,7 @@ typedef struct		s_env
 	int				y;
 	int				end;
 	int				color;
+	int				hori;
 	t_player			*p;
 	t_ray				*r;
 	t_map				*m;
@@ -107,10 +112,17 @@ typedef struct		s_env
 void				error_wolf(char *err);
 int					quit_wolf(t_env *e);
 void				init_wolf(t_env *e);
+void				loop_wolf(t_env *e);
 
 void				raycasting(t_env *e);
 
 void				draw(t_env *e);
 void				print_image(t_env *e);
 
+void				move_left(t_env *e);
+void				move_right(t_env *e);
+void				move_down(t_env *e);
+void				move_up(t_env *e);
+
+extern int maptest[24][24];
 #endif
