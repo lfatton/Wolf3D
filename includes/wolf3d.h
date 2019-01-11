@@ -6,7 +6,7 @@
 /*   By: lfatton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 17:37:43 by lfatton           #+#    #+#             */
-/*   Updated: 2019/01/10 16:07:09 by lfatton          ###   ########.fr       */
+/*   Updated: 2019/01/11 13:07:33 by lfatton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,13 @@ typedef struct		s_ray
 {
 	double			ang;
 	double			tan;
+	double			h_hit_x;
+	double			v_hit_y;
 	t_coords		hit;
 	t_coords		step;
 	double			dist;
 	double			length;
+	int			offset;
 
 }					t_ray;
 
@@ -97,12 +100,13 @@ typedef struct		s_env
 	SDL_Window		*win;
 	SDL_Renderer		*render;
 	SDL_Texture		*text;
-	int			*pix;
+	SDL_Surface		*surf;
+	SDL_Surface		*wall;
 	int				quit;
 	int				x;
 	int				y;
 	int				end;
-	int				color;
+	Uint32				color;
 	int				hori;
 	t_player			*p;
 	t_ray				*r;
@@ -116,6 +120,8 @@ void				loop_wolf(t_env *e);
 
 void				raycasting(t_env *e);
 
+Uint32 				get_pixel(SDL_Surface *s, int x, int y);
+void				put_pixel(SDL_Surface *s, int x, int y, Uint32 color);
 void				draw(t_env *e);
 void				print_image(t_env *e);
 

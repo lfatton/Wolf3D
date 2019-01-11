@@ -6,7 +6,7 @@
 /*   By: lfatton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 00:01:55 by lfatton           #+#    #+#             */
-/*   Updated: 2019/01/10 15:57:42 by lfatton          ###   ########.fr       */
+/*   Updated: 2019/01/10 16:24:24 by lfatton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,9 @@ void	raycasting(t_env *e)
 		e->r->ang += (e->r->ang < 0) ? 360 : 0;
 		e->r->ang -= (e->r->ang >= 360) ? 360 : 0;
 		h_res = raycast_hor(e);
+		e->r->h_hit_x = e->r->hit.x;
 		v_res = raycast_ver(e);
+		e->r->v_hit_y = e->r->hit.y;
 		if ((h_res < v_res) && (e->hori = 1))
 			e->r->dist = h_res;
 		else

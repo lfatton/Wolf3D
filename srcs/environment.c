@@ -6,7 +6,7 @@
 /*   By: lfatton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 17:52:06 by lfatton           #+#    #+#             */
-/*   Updated: 2019/01/10 16:06:44 by lfatton          ###   ########.fr       */
+/*   Updated: 2019/01/11 14:38:58 by lfatton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@ void		error_wolf(char *err)
 
 int			quit_wolf(t_env *e)
 {
+	SDL_FreeSurface(e->wall);
+	SDL_FreeSurface(e->surf);
+	SDL_DestroyTexture(e->text);
 	SDL_DestroyRenderer(e->render);
 	SDL_DestroyWindow(e->win);
 	SDL_Quit();
@@ -47,8 +50,10 @@ void	init_wolf(t_env *e)
 		error_wolf("error: cannot run SDL");
 	if (SDL_CreateWindowAndRenderer(WIN_W, WIN_H, 0, &e->win, &e->render))
 		error_wolf("error: cannot create window");
-	if (!(e->pix = (int*)malloc(sizeof(int) * WIN_W * WIN_H)))
-		error_wolf("error: cannot allocate memory for the image");
+	if (!(e->surf = SDL_CreateRGBSurface(0, WIN_W, WIN_H, 32, 0, 0, 0, 0)))
+		error_wolf("error: cannot create surface");
+ 	//if (!(e->wall = SDL_LoadBMP("../textures/eagle.bmp")))
+	//	error_wolf("error: cannot load BMP file");
 	e->quit = 0;
 	init_player(e);
 }

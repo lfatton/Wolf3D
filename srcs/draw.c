@@ -6,17 +6,40 @@
 /*   By: lfatton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 23:54:09 by lfatton           #+#    #+#             */
-/*   Updated: 2019/01/10 14:48:57 by lfatton          ###   ########.fr       */
+/*   Updated: 2019/01/11 14:38:32 by lfatton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
+Uint32	get_pixel(SDL_Surface *s, int x, int y) 
+{
+	Uint32	*pix;
+
+	pix = (Uint32*)s->pixels;
+	return (pix[x + y * s->w]);
+} 
+
+void	put_pixel(SDL_Surface *s, int x, int y, Uint32 color)
+{
+	Uint32	*pix;
+
+	pix = (Uint32*)s->pixels;
+	pix[x + y * s->w] = color;
+}
+
 void	draw_line(t_env *e)
 {
+	double y;
+
+	y = TILE / 2;
 	while (e->y < e->end)
 	{
-		e->pix[e->x + e->y * WIN_W] = e->color;
+		//put_pixel(e->surf, e->x, e->y, get_pixel(e->wall, e->r->offset, y));
+		put_pixel(e->surf, e->x, e->y, e->color);
+		/*if (y > TILE - 1)
+			y = TILE - 1;
+		y += TILE / e->r->length;*/
 		e->y++;
 	}
 }
@@ -40,29 +63,34 @@ void	draw(t_env *e)
 	draw_ceil_and_floor(e);
       	e->y = HALF_H - e->r->length / 2;
       	e->end = e->r->length + e->y;
-	if (e->y < 0)
-      		e->y = 0;
-      	if (e->end >= WIN_H)
-      		e->end = WIN_H - 1;
-	if (e->hori && e->r->ang > EAST && e->r->ang < WEST)
-		e->color = LIGHTGRAY;
-	else if (!e->hori && (e->r->ang < NORTH || e->r->ang > SOUTH))
-		e->color = SILVER;
-	else if (e->hori && e->r->ang >=  WEST)
-		e->color = DARKGRAY;
-	else if (!e->hori && e->r->ang >= NORTH && e->r->ang <= SOUTH)
-		e->color = GRAY;
+	e->y = (e->y < 0 ? 0 : e->y);
+	e->end = (e->end >= WIN_H ? WIN_H - 1 : e->end);
+	if (e->hori)
+	{
+		e->r->offset = fmod(e->r->h_hit_x, TILE);
+		if (e->r->ang > EAST && e->r->ang < WEST)
+			e->color = LIGHTGRAY;
+		else
+			e->color = DARKGRAY;
+	}
+	else
+	{
+		e->r->offset = fmod(e->r->v_hit_y, TILE);
+		if (e->r->ang >= NORTH && e->r->ang <= SOUTH)
+			e->color = GRAY;
+		else
+			e->color = SILVER;
+	}
+	//e->color = get_pixel(e->wall, e->r->offset, e->y);
 	draw_line(e);
 }
 
 void	print_image(t_env *e)
 {
-	e->text = SDL_CreateTexture(e->render,
-                               SDL_PIXELFORMAT_ARGB8888,
-                               SDL_TEXTUREACCESS_STREAMING,
-                               WIN_W, WIN_H);
-	SDL_UpdateTexture(e->text, NULL, e->pix, WIN_W * sizeof (int));
+	SDL_DestroyTexture(e->text);
 	SDL_RenderClear(e->render);
+	if (!(e->text = SDL_CreateTextureFromSurface(e->render, e->surf)))
+		error_wolf("error: cannot create texture");
 	SDL_RenderCopy(e->render, e->text, NULL, NULL);
 	SDL_RenderPresent(e->render);
 }
