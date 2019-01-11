@@ -6,7 +6,7 @@
 /*   By: lfatton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 17:37:43 by lfatton           #+#    #+#             */
-/*   Updated: 2019/01/11 13:07:33 by lfatton          ###   ########.fr       */
+/*   Updated: 2019/01/11 17:55:20 by lfatton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ typedef struct		s_ray
 	double			h_hit_x;
 	double			v_hit_y;
 	t_coords		hit;
+	t_coords		text;
 	t_coords		step;
 	double			dist;
 	double			length;
@@ -101,6 +102,10 @@ typedef struct		s_env
 	SDL_Renderer		*render;
 	SDL_Texture		*text;
 	SDL_Surface		*surf;
+	SDL_Surface		*wallN;
+	SDL_Surface		*wallW;
+	SDL_Surface		*wallS;
+	SDL_Surface		*wallE;
 	SDL_Surface		*wall;
 	int				quit;
 	int				x;

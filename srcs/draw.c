@@ -6,7 +6,7 @@
 /*   By: lfatton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 23:54:09 by lfatton           #+#    #+#             */
-/*   Updated: 2019/01/11 14:38:32 by lfatton          ###   ########.fr       */
+/*   Updated: 2019/01/11 18:00:10 by lfatton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,19 @@ void	put_pixel(SDL_Surface *s, int x, int y, Uint32 color)
 	pix[x + y * s->w] = color;
 }
 
-void	draw_line(t_env *e)
+void	draw_wall(t_env *e)
 {
-	double y;
-
-	y = TILE / 2;
+	int	i;
+	
+	i = 0;
+	e->r->text.y = 0;
 	while (e->y < e->end)
 	{
-		//put_pixel(e->surf, e->x, e->y, get_pixel(e->wall, e->r->offset, y));
+		e->color = get_pixel(e->wall, e->r->text.x, e->r->text.y);
 		put_pixel(e->surf, e->x, e->y, e->color);
-		/*if (y > TILE - 1)
-			y = TILE - 1;
-		y += TILE / e->r->length;*/
 		e->y++;
+		i++;
+		e->r->text.y = TILE / e->r->length * i;
 	}
 }
 
@@ -49,11 +49,19 @@ void	draw_ceil_and_floor(t_env *e)
 	e->y = 0;
 	e->end = HALF_H;
 	e->color = SKYBLUE;
-	draw_line(e);
+	while (e->y < e->end)
+	{
+		put_pixel(e->surf, e->x, e->y, e->color);
+		e->y++;
+	}
 	e->y = HALF_H;
 	e->end = WIN_H - 1;
 	e->color = BROWN;
-	draw_line(e);
+	while (e->y < e->end)
+	{
+		put_pixel(e->surf, e->x, e->y, e->color);
+		e->y++;
+	}
 }
 
 void	draw(t_env *e)
@@ -62,27 +70,26 @@ void	draw(t_env *e)
       	e->r->length = RATIO / e->r->dist;
 	draw_ceil_and_floor(e);
       	e->y = HALF_H - e->r->length / 2;
-      	e->end = e->r->length + e->y;
+      	e->end = HALF_H + e->r->length / 2;
 	e->y = (e->y < 0 ? 0 : e->y);
 	e->end = (e->end >= WIN_H ? WIN_H - 1 : e->end);
 	if (e->hori)
 	{
-		e->r->offset = fmod(e->r->h_hit_x, TILE);
+		e->r->text.x = fmod(e->r->h_hit_x, TILE);
 		if (e->r->ang > EAST && e->r->ang < WEST)
-			e->color = LIGHTGRAY;
+			e->wall = e->wallN;
 		else
-			e->color = DARKGRAY;
+			e->wall = e->wallS;
 	}
 	else
 	{
-		e->r->offset = fmod(e->r->v_hit_y, TILE);
+		e->r->text.x = fmod(e->r->v_hit_y, TILE);
 		if (e->r->ang >= NORTH && e->r->ang <= SOUTH)
-			e->color = GRAY;
+			e->wall = e->wallW;
 		else
-			e->color = SILVER;
+			e->wall = e->wallE;
 	}
-	//e->color = get_pixel(e->wall, e->r->offset, e->y);
-	draw_line(e);
+	draw_wall(e);
 }
 
 void	print_image(t_env *e)
