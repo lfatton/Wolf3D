@@ -19,6 +19,9 @@ SRC_PATH = srcs
 SRC_NAME =	main.c \
 			environment.c \
 			image.c \
+			map_extractor.c \
+			bmp_loader.c \
+			map_verifs.c \
 
 SRCS = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 

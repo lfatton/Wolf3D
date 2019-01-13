@@ -25,18 +25,17 @@ void		events_loop(t_env *e)
 
 int			main(int ac, char **av)
 {
-	int		fd;
 	t_env	*e;
 
 	if (!(e = (t_env*)malloc(sizeof(t_env))))
 		error_wolf("error: cannot allocate memory");
 	if (!(e->cam = (t_cam*)malloc(sizeof(t_cam))))
 		error_wolf("error: cannot allocate memory");
-	if (ac != 2)
-		error_wolf("usage: ./wolf3d input_file");
-	fd = open(av[1], O_RDONLY);
-	//parse(e, fd);
-	close(fd);
+	if (ac > 2)
+		error_wolf("usage: ./wolf3d or ./wolf3d input_file to "
+			"override textures and map with your own");
+	if (!(e->sprites = get_sprites(ac - 1, av, e)))
+	    error_wolf("There was an issue while loading the bmp.");
 	init_wolf(e);
 	events_loop(e);
 	pthread_exit(NULL);

@@ -29,15 +29,31 @@
 # define THREADS 16
 # define WIN_W 320
 # define WIN_H 200
+# define MAP_W 100
+# define MAP_H 100
 # define FOV 60
 # define BLOCK 64
 # define CAM_H BLOCK / 2
-
+# define BMP_PATH "assets/bmp/maptest.bmp"
 # define LEFT_BUTTON 1
 # define RIGHT_BUTTON 3
 # define ZOOM_IN 4
 # define ZOOM_OUT 5
 # define ZOOM_LOCK 2
+
+enum				TPixColor_ABGR
+{
+	tRed = 3,
+	tGreen = 2,
+	tBlue = 1
+};
+
+enum				TTile
+{
+	tWall,
+	tPlayerSpawn,
+	tEmpty
+};
 
 typedef struct		s_cam
 {
@@ -45,10 +61,24 @@ typedef struct		s_cam
 	double			pos_y;
 }					t_cam;
 
+typedef struct		s_sprites
+{
+	SDL_Surface		*all;
+	SDL_Surface		*map;
+	SDL_Surface		*north_wall;
+	SDL_Surface		*south_wall;
+	SDL_Surface		*west_wall;
+	SDL_Surface		*east_wall;
+}					t_sprites;
+
 typedef struct		s_env
 {
 	SDL_Window		*win;
 	SDL_Renderer	*render;
+	t_sprites		*sprites;
+	int				map_w;
+	int				map_h;
+	enum TTile		**tiles;
 	int				quit;
 	double			time;
 	double			prev_time;
@@ -73,5 +103,14 @@ int					key_hook(int key, t_env *e);
 int					mouse_hook(int btn, int x, int y, t_env *e);
 int					mouse_motion(int x, int y, t_env *e);
 int					expose_hook(t_env *e);
+
+t_sprites			*get_sprites(int ac, char **av, t_env *e);
+SDL_Surface			*extract_map(SDL_Surface *all);
+enum TTile			**transform_pixels_to_tiles(SDL_Surface *map);
+void				read_tiles(t_env *e);
+void				verify_map(enum TTile **tiles);
+int					apply_to_whole_map(enum TTile **tiles, int (*action)(enum TTile*, int, int));
+int					isnt_PlayerSpawn(enum TTile *tile, int x, int y);
+int					put_wall_if_border(enum TTile *tile, int x, int y);
 
 #endif
