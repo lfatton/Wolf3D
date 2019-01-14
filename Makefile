@@ -6,7 +6,7 @@
 #    By: lfatton <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/30 00:05:23 by lfatton           #+#    #+#              #
-#    Updated: 2019/01/10 15:35:51 by lfatton          ###   ########.fr        #
+#    Updated: 2019/01/12 13:31:23 by lfatton          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,7 @@ LIBS = -lm -lpthread
 
 CC = clang
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra #-Ofast -ftlo
 
 ifeq ($(shell uname), Darwin)
 	CONFIGURE_SDL = cd $(SDL_NAME) ; ./configure --prefix="/Users/lfatton/Louttia/wolf3d/$(SDL_NAME)"; $(MAKE) ; $(MAKE) install

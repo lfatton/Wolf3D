@@ -6,7 +6,7 @@
 /*   By: lfatton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 23:54:09 by lfatton           #+#    #+#             */
-/*   Updated: 2019/01/11 18:00:10 by lfatton          ###   ########.fr       */
+/*   Updated: 2019/01/12 13:28:33 by lfatton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,12 @@ void	put_pixel(SDL_Surface *s, int x, int y, Uint32 color)
 
 void	draw_wall(t_env *e)
 {
-	int	i;
-	
-	i = 0;
-	e->r->text.y = 0;
 	while (e->y < e->end)
 	{
+		e->r->text.y = (e->y - HALF_H + e->r->length / 2) * TILE / e->r->length;
 		e->color = get_pixel(e->wall, e->r->text.x, e->r->text.y);
 		put_pixel(e->surf, e->x, e->y, e->color);
 		e->y++;
-		i++;
-		e->r->text.y = TILE / e->r->length * i;
 	}
 }
 
