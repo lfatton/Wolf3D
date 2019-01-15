@@ -6,7 +6,7 @@
 /*   By: lfatton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 17:52:06 by lfatton           #+#    #+#             */
-/*   Updated: 2019/01/14 14:13:19 by lfatton          ###   ########.fr       */
+/*   Updated: 2019/01/15 18:17:33 by lfatton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	init_wolf(t_env *e)
 {
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
 		error_wolf("error: cannot run SDL");
-	if (SDL_CreateWindowAndRenderer(WIN_W, WIN_H, SDL_WINDOW_FULLSCREEN, &e->win, &e->render) < 0)
+	if (SDL_CreateWindowAndRenderer(WIN_W, WIN_H, 0, &e->win, &e->render) < 0)
 		error_wolf("error: cannot create window");
 	if (SDL_ShowCursor(SDL_DISABLE) < 0)
 		error_wolf("error: cannot hide mouse cursor");
