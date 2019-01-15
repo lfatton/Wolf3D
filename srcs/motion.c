@@ -6,7 +6,7 @@
 /*   By: lfatton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 15:27:34 by lfatton           #+#    #+#             */
-/*   Updated: 2019/01/11 15:17:28 by lfatton          ###   ########.fr       */
+/*   Updated: 2019/01/14 12:08:28 by lfatton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,18 @@ void	move_up(t_env *e)
 		e->p->pos.x = test.x;
 		e->p->pos.y = test.y;
 	}
+}
+
+void	crouch_and_fly(t_env *e, int key, int type)
+{
+	double	newheight;
+
+	if (key == SDL_SCANCODE_LSHIFT)
+		newheight = WIN_H - 2 * WIN_H / 3;
+	else if (key == SDL_SCANCODE_F)
+		newheight = WIN_H - WIN_H / 3;
+	if (type == SDL_KEYDOWN)
+		e->p->height = newheight;
+	else if (type == SDL_KEYUP)
+		e->p->height = HALF_H;
 }

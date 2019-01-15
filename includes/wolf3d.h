@@ -6,7 +6,7 @@
 /*   By: lfatton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 17:37:43 by lfatton           #+#    #+#             */
-/*   Updated: 2019/01/12 13:48:47 by lfatton          ###   ########.fr       */
+/*   Updated: 2019/01/14 12:05:51 by lfatton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,9 @@ typedef struct		s_player
 {
 	t_coords		pos;
 	double			vis;
+	double			height;
+	int				crouch;
+	int				fly;
 }					t_player;
 
 typedef struct		s_ray
@@ -134,6 +137,7 @@ void				move_left(t_env *e);
 void				move_right(t_env *e);
 void				move_down(t_env *e);
 void				move_up(t_env *e);
+void				crouch_and_fly(t_env *e, int k, int type);
 
 extern int maptest[24][24];
 #endif

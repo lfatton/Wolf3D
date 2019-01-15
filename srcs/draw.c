@@ -6,7 +6,7 @@
 /*   By: lfatton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 23:54:09 by lfatton           #+#    #+#             */
-/*   Updated: 2019/01/12 13:28:33 by lfatton          ###   ########.fr       */
+/*   Updated: 2019/01/14 11:28:31 by lfatton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	draw_wall(t_env *e)
 {
 	while (e->y < e->end)
 	{
-		e->r->text.y = (e->y - HALF_H + e->r->length / 2) * TILE / e->r->length;
+		e->r->text.y = (e->y - e->p->height + e->r->length / 2) * TILE / e->r->length;
 		e->color = get_pixel(e->wall, e->r->text.x, e->r->text.y);
 		put_pixel(e->surf, e->x, e->y, e->color);
 		e->y++;
@@ -42,14 +42,14 @@ void	draw_wall(t_env *e)
 void	draw_ceil_and_floor(t_env *e)
 {
 	e->y = 0;
-	e->end = HALF_H;
+	e->end = e->p->height;
 	e->color = SKYBLUE;
 	while (e->y < e->end)
 	{
 		put_pixel(e->surf, e->x, e->y, e->color);
 		e->y++;
 	}
-	e->y = HALF_H;
+	e->y = e->p->height;
 	e->end = WIN_H - 1;
 	e->color = BROWN;
 	while (e->y < e->end)
@@ -64,8 +64,8 @@ void	draw(t_env *e)
 	e->r->dist *= cos(ft_degtorad(e->p->vis - e->r->ang));
       	e->r->length = RATIO / e->r->dist;
 	draw_ceil_and_floor(e);
-      	e->y = HALF_H - e->r->length / 2;
-      	e->end = HALF_H + e->r->length / 2;
+      	e->y = e->p->height - e->r->length / 2;
+      	e->end = e->p->height + e->r->length / 2;
 	e->y = (e->y < 0 ? 0 : e->y);
 	e->end = (e->end >= WIN_H ? WIN_H - 1 : e->end);
 	if (e->hori)

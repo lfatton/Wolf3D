@@ -6,7 +6,7 @@
 /*   By: lfatton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 17:52:06 by lfatton           #+#    #+#             */
-/*   Updated: 2019/01/12 13:35:27 by lfatton          ###   ########.fr       */
+/*   Updated: 2019/01/14 14:13:19 by lfatton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,12 @@ int			quit_wolf(t_env *e)
 
 static void	init_player(t_env *e)
 {
-	//e->p->height = TILE / 2;
+	e->p->height = HALF_H;
 	e->p->pos.x = 2 * TILE;
 	e->p->pos.y = 2 * TILE;
 	e->p->vis = 30;
+	e->p->crouch = 0;
+	e->p->fly = 0;
 e->m->w = 24;
 e->m->h = 24;
 }
@@ -51,8 +53,10 @@ void	init_wolf(t_env *e)
 {
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
 		error_wolf("error: cannot run SDL");
-	if (SDL_CreateWindowAndRenderer(WIN_W, WIN_H, 0, &e->win, &e->render))
+	if (SDL_CreateWindowAndRenderer(WIN_W, WIN_H, SDL_WINDOW_FULLSCREEN, &e->win, &e->render) < 0)
 		error_wolf("error: cannot create window");
+	if (SDL_ShowCursor(SDL_DISABLE) < 0)
+		error_wolf("error: cannot hide mouse cursor");
  	if (!(e->wallN = SDL_LoadBMP("./textures/eagle.bmp")))
 		error_wolf("error: cannot load BMP file");
  	if (!(e->wallW = SDL_LoadBMP("./textures/greystone.bmp")))
@@ -79,18 +83,20 @@ void		loop_wolf(t_env *e)
 		{
 			if ((event.type == SDL_QUIT || event.key.keysym.scancode == SDL_SCANCODE_ESCAPE) && (e->quit = 1))
 				quit_wolf(e);
-			if (event.key.keysym.scancode == SDL_SCANCODE_LEFT)
+			if (event.type == SDL_KEYDOWN && event.key.keysym.scancode == SDL_SCANCODE_LEFT)
 				e->p->vis += SPEED;
-			if (event.key.keysym.scancode == SDL_SCANCODE_RIGHT)
+			if (event.type == SDL_KEYDOWN && event.key.keysym.scancode == SDL_SCANCODE_RIGHT)
 				e->p->vis -= SPEED;
-			if (event.key.keysym.scancode == SDL_SCANCODE_W)
+			if (event.type == SDL_KEYDOWN && (event.key.keysym.scancode == SDL_SCANCODE_W || event.key.keysym.scancode == SDL_SCANCODE_UP))
 				move_up(e);
-			if (event.key.keysym.scancode == SDL_SCANCODE_S)
+			if (event.type == SDL_KEYDOWN && (event.key.keysym.scancode == SDL_SCANCODE_S || event.key.keysym.scancode == SDL_SCANCODE_DOWN))
 				move_down(e);
-			if (event.key.keysym.scancode == SDL_SCANCODE_D)
+			if (event.type == SDL_KEYDOWN && event.key.keysym.scancode == SDL_SCANCODE_D)
 				move_right(e);
-			if (event.key.keysym.scancode == SDL_SCANCODE_A)
+			if (event.type == SDL_KEYDOWN && event.key.keysym.scancode == SDL_SCANCODE_A)
 				move_left(e);
+			if (event.key.keysym.scancode == SDL_SCANCODE_LSHIFT || event.key.keysym.scancode == SDL_SCANCODE_F)
+				crouch_and_fly(e, event.key.keysym.scancode, event.type);
 		}
 	}
 }

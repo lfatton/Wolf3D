@@ -6,11 +6,17 @@
 /*   By: lfatton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 00:01:55 by lfatton           #+#    #+#             */
-/*   Updated: 2019/01/12 13:32:30 by lfatton          ###   ########.fr       */
+/*   Updated: 2019/01/14 11:18:29 by lfatton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+
+//void		floorcasting(t_env *e)
+//{
+	
+
+//}
 
 static void	dda(t_env *e)
 {
