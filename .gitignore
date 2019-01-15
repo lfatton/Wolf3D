@@ -7,5 +7,4 @@
 *.dSYM/
 ./objs/
 .DS_Store
-SDL2-2.0.9/*
-SDL2-2.0.9/config.log
+SDL2-2.0.9/
