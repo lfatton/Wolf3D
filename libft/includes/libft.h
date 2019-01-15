@@ -6,7 +6,7 @@
 /*   By: lfatton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/06 17:59:22 by lfatton           #+#    #+#             */
-/*   Updated: 2018/12/03 16:08:23 by lfatton          ###   ########.fr       */
+/*   Updated: 2018/12/20 22:45:22 by lfatton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char			*ft_strstr(const char *dst, const char *src);
 char			*ft_strnstr(const char *dst, const char *src, size_t len);
 int				ft_abs(int value);
 double			ft_dabs(double value);
-double			ft_pow(double value);
+double			ft_sq(double value);
 double			ft_degtorad(double value);
 double			ft_radtodeg(double value);
 int				ft_isblank(int c);

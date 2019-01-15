@@ -1,6 +1,6 @@
 # sdl pkg-config source file
 
-prefix=/Users/mtorsell/sdl2/SDL2-2.0.9
+prefix=/Users/mtorsell/SDL2-2.0.9
 exec_prefix=${prefix}
 libdir=${exec_prefix}/lib
 includedir=${prefix}/include

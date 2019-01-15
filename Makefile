@@ -6,7 +6,7 @@
 #    By: lfatton <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/30 00:05:23 by lfatton           #+#    #+#              #
-#    Updated: 2018/12/03 18:48:56 by lfatton          ###   ########.fr        #
+#    Updated: 2019/01/15 19:34:50 by lfatton          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,10 +18,12 @@ SRC_PATH = srcs
 
 SRC_NAME =	main.c \
 			environment.c \
-			image.c \
 			map_extractor.c \
 			bmp_loader.c \
 			map_verifs.c \
+			raycasting.c \
+			draw.c \
+			motion.c \
 
 SRCS = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 
@@ -37,6 +39,8 @@ INCL_PATH = includes
 
 SDL_NAME = SDL2-2.0.9
 
+USER = $(shell whoami)
+
 LIBFT_INCL_PATH = ./libft/includes
 
 SDL_INCL_PATH = ./$(SDL_NAME)/include
@@ -51,17 +55,17 @@ LIBS = -lm -lpthread
 
 CC = clang
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra #-Ofast -ftlo
 
 ifeq ($(shell uname), Darwin)
-	CONFIGURE_SDL = cd $(SDL_NAME) ; ./configure --prefix="/Users/mtorsell/sdl2/$(SDL_NAME)"; $(MAKE) ; $(MAKE) install
+	CONFIGURE_SDL = cd $(SDL_NAME) ; ./configure --prefix="/Users/$(USER)/$(SDL_NAME)"; $(MAKE) ; $(MAKE) install
 else
 	CONFIGURE_SDL = cd $(SDL_NAME) ; ./configure ; $(MAKE) ; sudo $(MAKE) install
 endif
 
-SDL_LDFLAGS := $(shell cd $(SDL_NAME) ; ./sdl2-config --libs)
+SDL_LDFLAGS = $(shell cd $(SDL_NAME) ; ./sdl2-config --libs)
 
-SDL_CFLAGS :=  $(shell cd $(SDL_NAME) ; ./sdl2-config --cflags)
+SDL_CFLAGS = $(shell cd $(SDL_NAME) ; ./sdl2-config --cflags)
 
 RM = rm -rf
 
