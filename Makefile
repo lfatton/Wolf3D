@@ -81,7 +81,7 @@ $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INCL)
 	@$(CC) $(CFLAGS) $(IFLAGS) $(SDL_CFLAGS) -o $@ -c $<
 
 run: $(NAME)
-	@./$(NAME) $(NAME)
+	@./$(NAME)
 
 norm:
 	@norminette $(SRCS) $(INCL)
