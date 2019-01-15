@@ -1,4 +1,4 @@
-./w.idea/*
+.idea/*
 *.o
 *.a
 *.exe
