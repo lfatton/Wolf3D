@@ -58,9 +58,9 @@ CC = clang
 CFLAGS = -Wall -Werror -Wextra #-Ofast -ftlo
 
 ifeq ($(shell uname), Darwin)
-	CONFIGURE_SDL = cd $(SDL_NAME) ; ./configure --prefix="/Users/$(USER)/$(SDL_NAME)"; $(MAKE) ; $(MAKE) install
+	CONFIGURE_SDL = cd $(SDL_NAME) ; ./configure --prefix="/Users/$(USER)/$(SDL_NAME)"; $(MAKE) -j; $(MAKE) install
 else
-	CONFIGURE_SDL = cd $(SDL_NAME) ; ./configure ; $(MAKE) ; sudo $(MAKE) install
+	CONFIGURE_SDL = cd $(SDL_NAME) ; ./configure ; $(MAKE) -j; sudo $(MAKE) install
 endif
 
 SDL_LDFLAGS = $(shell cd $(SDL_NAME) ; ./sdl2-config --libs)
