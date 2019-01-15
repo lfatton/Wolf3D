@@ -86,7 +86,9 @@ run: $(NAME)
 norm:
 	@norminette $(SRCS) $(INCL)
 
-git: fclean
+git: clean
+	@$(RM) $(NAME)
+	@$(MAKE) -C libft fclean
 	@git add -A
 	@git status
 
