@@ -7,4 +7,3 @@
 *.dSYM/
 ./objs/
 .DS_Store
-SDL2-2.0.9/
