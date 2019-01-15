@@ -9,7 +9,8 @@ int					put_wall_if_border(enum TTile *tile, int x, int y)
 
 int					isnt_PlayerSpawn(enum TTile *tile, int x, int y)
 {
-	x = y;
+	(void)x;
+	(void)y;
 	if (*tile == tPlayerSpawn)
 		return (0);
 	return (1);

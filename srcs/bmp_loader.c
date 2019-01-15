@@ -18,6 +18,6 @@ t_sprites			*get_sprites(int ac, char **av, t_env *e)
 	if (!(e->tiles = transform_pixels_to_tiles((sprites->map))))
 		return NULL;
 	verify_map(e->tiles);
-	read_tiles(e);
+	//read_tiles(e);
 	return (sprites);
 }

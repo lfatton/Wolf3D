@@ -73,6 +73,7 @@ SDL_Surface		*extract_map(SDL_Surface *all)
 	return (map);
 }
 
+/*
 void				read_tiles(t_env *e)
 {
 	int x, y = 0;
@@ -95,3 +96,4 @@ void				read_tiles(t_env *e)
 		y++;
 	}
 }
+*/

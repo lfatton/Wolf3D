@@ -54,7 +54,7 @@ CC = clang
 CFLAGS = -Wall -Werror -Wextra
 
 ifeq ($(shell uname), Darwin)
-	CONFIGURE_SDL = cd $(SDL_NAME) ; ./configure --prefix="/Users/lfatton/Louttia/wolf3d/$(SDL_NAME)"; $(MAKE) ; $(MAKE) install
+	CONFIGURE_SDL = cd $(SDL_NAME) ; ./configure --prefix="/Users/mtorsell/sdl2/$(SDL_NAME)"; $(MAKE) ; $(MAKE) install
 else
 	CONFIGURE_SDL = cd $(SDL_NAME) ; ./configure ; $(MAKE) ; sudo $(MAKE) install
 endif
