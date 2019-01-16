@@ -49,51 +49,25 @@ enum TTile			**transform_pixels_to_tiles(SDL_Surface *map)
 	return (tiles);
 }
 
-SDL_Surface		*extract_map(SDL_Surface *all)
-{
-	SDL_Surface		*map;
-	Uint32			*pixels;
-	int 			x;
-	int				y;
-
-	if (!(map = SDL_CreateRGBSurfaceWithFormat(0, MAP_W, MAP_H, 32, all->format->format)))
-		return NULL;
-	pixels = (Uint32 *)all->pixels;
-	y = 0;
-	while (y < MAP_H)
-	{
-		x = 0;
-		while (x < MAP_W)
-		{
-			((Uint32 *)map->pixels)[x + (y * MAP_W)] = pixels[x + (y * MAP_W)];
-			x++;
-		}
-		y++;
-	}
-	return (map);
-}
-
-/*
-void				read_tiles(t_env *e)
-{
-	int x, y = 0;
-
-	while (y < MAP_H)
-	{
-		x = 0;
-		while (x < MAP_W)
-		{
-			if (e->tiles[y][x] == tWall)
-				ft_putchar('w');
-			else if (e->tiles[y][x] == tEmpty)
-				ft_putchar('e');
-			else if (e->tiles[y][x] == tPlayerSpawn)
-				ft_putchar('p');
-			ft_putchar(' ');
-			x++;
-		}
-		ft_putendl("");
-		y++;
-	}
-}
-*/
+//void				read_tiles(t_env *e)
+//{
+//	int x, y = 0;
+//
+//	while (y < MAP_H)
+//	{
+//		x = 0;
+//		while (x < MAP_W)
+//		{
+//			if (e->tiles[y][x] == tWall)
+//				ft_putchar('w');
+//			else if (e->tiles[y][x] == tEmpty)
+//				ft_putchar('e');
+//			else if (e->tiles[y][x] == tPlayerSpawn)
+//				ft_putchar('p');
+//			ft_putchar(' ');
+//			x++;
+//		}
+//		ft_putendl("");
+//		y++;
+//	}
+//}

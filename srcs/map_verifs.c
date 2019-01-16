@@ -37,7 +37,6 @@ int					apply_to_whole_map(enum TTile **tiles, int (*action)(enum TTile*, int, i
 	return (ret);
 }
 
-
 void			verify_map(enum TTile **tiles)
 {
 	(void)apply_to_whole_map(tiles, &put_wall_if_border);

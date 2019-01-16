@@ -33,7 +33,7 @@ void	draw_wall(t_env *e)
 	while (e->y < e->end)
 	{
 		e->r->text.y = (e->y - e->p->height + e->r->length / 2) * TILE / e->r->length;
-		e->color = get_pixel(e->wall, e->r->text.x, e->r->text.y);
+		e->color = get_pixel(e->sprites->wall, e->r->text.x, e->r->text.y);
 		put_pixel(e->surf, e->x, e->y, e->color);
 		e->y++;
 	}
@@ -72,17 +72,17 @@ void	draw(t_env *e)
 	{
 		e->r->text.x = fmod(e->r->h_hit_x, TILE);
 		if (e->r->ang > EAST && e->r->ang < WEST)
-			e->wall = e->wallN;
+			e->sprites->wall = e->sprites->wallN;
 		else
-			e->wall = e->wallS;
+			e->sprites->wall = e->sprites->wallS;
 	}
 	else
 	{
 		e->r->text.x = fmod(e->r->v_hit_y, TILE);
 		if (e->r->ang >= NORTH && e->r->ang <= SOUTH)
-			e->wall = e->wallW;
+			e->sprites->wall = e->sprites->wallW;
 		else
-			e->wall = e->wallE;
+			e->sprites->wall = e->sprites->wallE;
 	}
 	draw_wall(e);
 }
