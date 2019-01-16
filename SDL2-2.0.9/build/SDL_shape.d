@@ -1,8 +1,8 @@
 build/SDL_shape.lo: \
-  /Users/mtorsell/CLionProjects/Wolf3D/SDL2-2.0.9/src/video/SDL_shape.c \
-  /Users/mtorsell/CLionProjects/Wolf3D/SDL2-2.0.9/src/video/../SDL_internal.h \
-  /Users/mtorsell/CLionProjects/Wolf3D/SDL2-2.0.9/src/video/../dynapi/SDL_dynapi.h \
-  /Users/mtorsell/CLionProjects/Wolf3D/SDL2-2.0.9/src/video/../dynapi/SDL_dynapi_overrides.h \
+  /Users/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/SDL_shape.c \
+  /Users/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/../SDL_internal.h \
+  /Users/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/../dynapi/SDL_dynapi.h \
+  /Users/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/../dynapi/SDL_dynapi_overrides.h \
   include/SDL_config.h include/SDL_platform.h include/begin_code.h \
   include/close_code.h include/SDL.h include/SDL_main.h \
   include/SDL_stdinc.h include/SDL_assert.h include/SDL_atomic.h \
@@ -18,9 +18,9 @@ build/SDL_shape.lo: \
   include/SDL_log.h include/SDL_messagebox.h include/SDL_power.h \
   include/SDL_render.h include/SDL_sensor.h include/SDL_shape.h \
   include/SDL_system.h include/SDL_timer.h include/SDL_version.h \
-  /Users/mtorsell/CLionProjects/Wolf3D/SDL2-2.0.9/src/video/SDL_sysvideo.h \
-  /Users/mtorsell/CLionProjects/Wolf3D/SDL2-2.0.9/src/video/SDL_vulkan_internal.h \
-  /Users/mtorsell/CLionProjects/Wolf3D/SDL2-2.0.9/src/video/./khronos/vulkan/vulkan.h \
-  /Users/mtorsell/CLionProjects/Wolf3D/SDL2-2.0.9/src/video/./khronos/vulkan/./vk_platform.h \
+  /Users/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/SDL_sysvideo.h \
+  /Users/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/SDL_vulkan_internal.h \
+  /Users/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/./khronos/vulkan/vulkan.h \
+  /Users/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/./khronos/vulkan/./vk_platform.h \
   include/SDL_vulkan.h \
-  /Users/mtorsell/CLionProjects/Wolf3D/SDL2-2.0.9/src/video/SDL_shape_internals.h
+  /Users/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/SDL_shape_internals.h

@@ -74,7 +74,7 @@ void	init_wolf(t_env *e)
 		error_wolf("error: cannot run SDL");
 	if (SDL_CreateWindowAndRenderer(WIN_W, WIN_H, SDL_WINDOW_FULLSCREEN_DESKTOP, &e->win, &e->render) < 0)
 		error_wolf("error: cannot create window");
-	if (SDL_ShowCursor(SDL_DISABLE) < 0)
+	if (SDL_SetRelativeMouseMode(SDL_TRUE) > 0)
 		error_wolf("error: cannot hide mouse cursor");
 	if (!(e->surf = SDL_CreateRGBSurfaceWithFormat(0, WIN_W, WIN_H, 32, e->sprites->all->format->format)))
 		error_wolf("error: cannot create surface");
@@ -94,6 +94,8 @@ void		loop_wolf(t_env *e)
 		{
 			if ((event.type == SDL_QUIT || event.key.keysym.scancode == SDL_SCANCODE_ESCAPE) && (e->quit = 1))
 				quit_wolf(e);
+			if (event.type == SDL_MOUSEMOTION)
+				e->p->vis -= event.motion.xrel;
 			if (event.type == SDL_KEYDOWN && event.key.keysym.scancode == SDL_SCANCODE_LEFT)
 				e->p->vis += SPEED;
 			if (event.type == SDL_KEYDOWN && event.key.keysym.scancode == SDL_SCANCODE_RIGHT)
