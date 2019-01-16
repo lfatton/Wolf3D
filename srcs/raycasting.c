@@ -42,7 +42,7 @@ static double	raycast_ver(t_env *e)
 	else
 	{
 		e->r->step.x = -TILE;
-		e->r->hit.x = floor(e->p->pos.x / TILE) * TILE - 0.001;
+		e->r->hit.x = floor(e->p->pos.x / TILE) * TILE - 1;
 	}
 	e->r->hit.y = e->p->pos.y + (e->p->pos.x - e->r->hit.x) * e->r->tan;
 	if (e->r->ang == EAST || e->r->ang == WEST)
@@ -61,7 +61,7 @@ static double	raycast_hor(t_env *e)
 	if (e->r->ang > EAST && e->r->ang < WEST)
 	{
 		e->r->step.y = -TILE;
-		e->r->hit.y = floor(e->p->pos.y / TILE) * TILE - 0.001;
+		e->r->hit.y = floor(e->p->pos.y / TILE) * TILE - 1;
 	}
 	else
 	{

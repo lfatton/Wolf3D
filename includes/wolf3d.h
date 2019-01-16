@@ -93,7 +93,6 @@ typedef struct		s_ray
 	t_coords_double	step;
 	double			dist;
 	double			length;
-	int			    offset;
 }					t_ray;
 
 typedef struct		s_sprites

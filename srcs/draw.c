@@ -30,6 +30,8 @@ void	put_pixel(SDL_Surface *s, int x, int y, Uint32 color)
 
 void	draw_wall(t_env *e)
 {
+	if (e->sprites->wall == e->sprites->wallS || e->sprites->wall == e->sprites->wallW)
+		e->r->text.x = TILE - e->r->text.x;
 	while (e->y < e->end)
 	{
 		e->r->text.y = (e->y - e->p->height + e->r->length / 2) * TILE / e->r->length;
@@ -62,10 +64,10 @@ void	draw_ceil_and_floor(t_env *e)
 void	draw(t_env *e)
 {
 	e->r->dist *= cos(ft_degtorad(e->p->vis - e->r->ang));
-      	e->r->length = RATIO / e->r->dist;
+	e->r->length = RATIO / e->r->dist;
 	draw_ceil_and_floor(e);
-      	e->y = e->p->height - e->r->length / 2;
-      	e->end = e->p->height + e->r->length / 2;
+	e->y = e->p->height - e->r->length / 2 + 1;
+	e->end = e->p->height + e->r->length / 2;
 	e->y = (e->y < 0 ? 0 : e->y);
 	e->end = (e->end >= WIN_H ? WIN_H - 1 : e->end);
 	if (e->hori)

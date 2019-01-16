@@ -81,7 +81,7 @@ $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INCL)
 	@$(CC) $(CFLAGS) $(IFLAGS) $(SDL_CFLAGS) -o $@ -c $<
 
 run: $(NAME)
-	@./$(NAME)
+	@./$(NAME) assets/bmp/satan.bmp
 
 norm:
 	@norminette $(SRCS) $(INCL)

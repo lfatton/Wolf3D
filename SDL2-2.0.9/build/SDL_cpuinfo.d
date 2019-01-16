@@ -1,11 +1,11 @@
 build/SDL_cpuinfo.lo: \
-  /Users/mtorsell/CLionProjects/Wolf3D/SDL2-2.0.9/src/cpuinfo/SDL_cpuinfo.c \
-  /Users/mtorsell/CLionProjects/Wolf3D/SDL2-2.0.9/src/cpuinfo/../SDL_internal.h \
-  /Users/mtorsell/CLionProjects/Wolf3D/SDL2-2.0.9/src/cpuinfo/../dynapi/SDL_dynapi.h \
-  /Users/mtorsell/CLionProjects/Wolf3D/SDL2-2.0.9/src/cpuinfo/../dynapi/SDL_dynapi_overrides.h \
+  /Users/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/cpuinfo/SDL_cpuinfo.c \
+  /Users/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/cpuinfo/../SDL_internal.h \
+  /Users/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/cpuinfo/../dynapi/SDL_dynapi.h \
+  /Users/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/cpuinfo/../dynapi/SDL_dynapi_overrides.h \
   include/SDL_config.h include/SDL_platform.h include/begin_code.h \
   include/close_code.h \
-  /Users/mtorsell/CLionProjects/Wolf3D/SDL2-2.0.9/src/cpuinfo/SDL_simd.h \
+  /Users/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/cpuinfo/SDL_simd.h \
   include/SDL.h include/SDL_main.h include/SDL_stdinc.h \
   include/SDL_assert.h include/SDL_atomic.h include/SDL_audio.h \
   include/SDL_error.h include/SDL_endian.h include/SDL_mutex.h \
