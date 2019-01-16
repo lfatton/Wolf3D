@@ -53,7 +53,6 @@ t_sprites			*get_sprites(int ac, char **av, t_env *e)
 	start.y = 0;
 	dimensions.x = MAP_W;
 	dimensions.y = MAP_H;
-
 	if (!(sprites = (t_sprites*)malloc(sizeof(t_sprites))))
 		return NULL;
 	if (ac)
@@ -62,6 +61,8 @@ t_sprites			*get_sprites(int ac, char **av, t_env *e)
 		path = BMP_PATH;
 	if (!(sprites->all = SDL_LoadBMP(path)))
 		return NULL;
+	if (sprites->all->format.BitsPerPixel != 32 || sprites->all->w != MAP_W + TILE)
+	    return NULL;
 	if (!(sprites->map = extract_surface_from_surface(sprites->all, start, dimensions)))
 		return NULL;
 	if (!(e->tiles = transform_pixels_to_tiles((sprites->map))))
