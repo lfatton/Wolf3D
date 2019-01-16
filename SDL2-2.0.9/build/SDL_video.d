@@ -1,8 +1,8 @@
 build/SDL_video.lo: \
-  /Users/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/SDL_video.c \
-  /Users/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/../SDL_internal.h \
-  /Users/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/../dynapi/SDL_dynapi.h \
-  /Users/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/../dynapi/SDL_dynapi_overrides.h \
+  /Users/mtorsell/CLionProjects/Wolf3D/SDL2-2.0.9/src/video/SDL_video.c \
+  /Users/mtorsell/CLionProjects/Wolf3D/SDL2-2.0.9/src/video/../SDL_internal.h \
+  /Users/mtorsell/CLionProjects/Wolf3D/SDL2-2.0.9/src/video/../dynapi/SDL_dynapi.h \
+  /Users/mtorsell/CLionProjects/Wolf3D/SDL2-2.0.9/src/video/../dynapi/SDL_dynapi_overrides.h \
   include/SDL_config.h include/SDL_platform.h include/begin_code.h \
   include/close_code.h include/SDL.h include/SDL_main.h \
   include/SDL_stdinc.h include/SDL_assert.h include/SDL_atomic.h \
@@ -18,24 +18,24 @@ build/SDL_video.lo: \
   include/SDL_log.h include/SDL_messagebox.h include/SDL_power.h \
   include/SDL_render.h include/SDL_sensor.h include/SDL_shape.h \
   include/SDL_system.h include/SDL_timer.h include/SDL_version.h \
-  /Users/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/SDL_sysvideo.h \
-  /Users/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/SDL_vulkan_internal.h \
-  /Users/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/./khronos/vulkan/vulkan.h \
-  /Users/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/./khronos/vulkan/./vk_platform.h \
+  /Users/mtorsell/CLionProjects/Wolf3D/SDL2-2.0.9/src/video/SDL_sysvideo.h \
+  /Users/mtorsell/CLionProjects/Wolf3D/SDL2-2.0.9/src/video/SDL_vulkan_internal.h \
+  /Users/mtorsell/CLionProjects/Wolf3D/SDL2-2.0.9/src/video/./khronos/vulkan/vulkan.h \
+  /Users/mtorsell/CLionProjects/Wolf3D/SDL2-2.0.9/src/video/./khronos/vulkan/./vk_platform.h \
   include/SDL_vulkan.h \
-  /Users/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/SDL_blit.h \
-  /Users/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/SDL_pixels_c.h \
-  /Users/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/SDL_rect_c.h \
-  /Users/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/../events/SDL_events_c.h \
-  /Users/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/../events/../video/SDL_sysvideo.h \
-  /Users/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/../events/SDL_clipboardevents_c.h \
-  /Users/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/../events/SDL_displayevents_c.h \
-  /Users/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/../events/SDL_dropevents_c.h \
-  /Users/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/../events/SDL_gesture_c.h \
-  /Users/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/../events/SDL_keyboard_c.h \
-  /Users/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/../events/SDL_mouse_c.h \
-  /Users/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/../events/SDL_touch_c.h \
-  /Users/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/../events/SDL_windowevents_c.h \
-  /Users/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/../timer/SDL_timer_c.h \
+  /Users/mtorsell/CLionProjects/Wolf3D/SDL2-2.0.9/src/video/SDL_blit.h \
+  /Users/mtorsell/CLionProjects/Wolf3D/SDL2-2.0.9/src/video/SDL_pixels_c.h \
+  /Users/mtorsell/CLionProjects/Wolf3D/SDL2-2.0.9/src/video/SDL_rect_c.h \
+  /Users/mtorsell/CLionProjects/Wolf3D/SDL2-2.0.9/src/video/../events/SDL_events_c.h \
+  /Users/mtorsell/CLionProjects/Wolf3D/SDL2-2.0.9/src/video/../events/../video/SDL_sysvideo.h \
+  /Users/mtorsell/CLionProjects/Wolf3D/SDL2-2.0.9/src/video/../events/SDL_clipboardevents_c.h \
+  /Users/mtorsell/CLionProjects/Wolf3D/SDL2-2.0.9/src/video/../events/SDL_displayevents_c.h \
+  /Users/mtorsell/CLionProjects/Wolf3D/SDL2-2.0.9/src/video/../events/SDL_dropevents_c.h \
+  /Users/mtorsell/CLionProjects/Wolf3D/SDL2-2.0.9/src/video/../events/SDL_gesture_c.h \
+  /Users/mtorsell/CLionProjects/Wolf3D/SDL2-2.0.9/src/video/../events/SDL_keyboard_c.h \
+  /Users/mtorsell/CLionProjects/Wolf3D/SDL2-2.0.9/src/video/../events/SDL_mouse_c.h \
+  /Users/mtorsell/CLionProjects/Wolf3D/SDL2-2.0.9/src/video/../events/SDL_touch_c.h \
+  /Users/mtorsell/CLionProjects/Wolf3D/SDL2-2.0.9/src/video/../events/SDL_windowevents_c.h \
+  /Users/mtorsell/CLionProjects/Wolf3D/SDL2-2.0.9/src/video/../timer/SDL_timer_c.h \
   include/SDL_syswm.h include/SDL_opengl.h include/SDL_opengl_glext.h \
-  /Users/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/cocoa/SDL_cocoamessagebox.h
+  /Users/mtorsell/CLionProjects/Wolf3D/SDL2-2.0.9/src/video/cocoa/SDL_cocoamessagebox.h

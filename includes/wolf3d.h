@@ -34,7 +34,7 @@
 # define HALF_H WIN_H / 2
 # define FOV 60.0
 # define TILE 64
-# define SPEED 5
+# define SPEED 25
 # define DECR_ANG FOV / (double)WIN_W
 # define RATIO TILE * (HALF_W / tan(ft_degtorad(FOV / 2)))
 

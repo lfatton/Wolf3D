@@ -1,11 +1,11 @@
 build/yuv_rgb.lo: \
-  /Users/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/yuv2rgb/yuv_rgb.c \
-  /Users/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/yuv2rgb/../../SDL_internal.h \
-  /Users/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/yuv2rgb/../../dynapi/SDL_dynapi.h \
-  /Users/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/yuv2rgb/../../dynapi/SDL_dynapi_overrides.h \
+  /Users/mtorsell/CLionProjects/Wolf3D/SDL2-2.0.9/src/video/yuv2rgb/yuv_rgb.c \
+  /Users/mtorsell/CLionProjects/Wolf3D/SDL2-2.0.9/src/video/yuv2rgb/../../SDL_internal.h \
+  /Users/mtorsell/CLionProjects/Wolf3D/SDL2-2.0.9/src/video/yuv2rgb/../../dynapi/SDL_dynapi.h \
+  /Users/mtorsell/CLionProjects/Wolf3D/SDL2-2.0.9/src/video/yuv2rgb/../../dynapi/SDL_dynapi_overrides.h \
   include/SDL_config.h include/SDL_platform.h include/begin_code.h \
   include/close_code.h \
-  /Users/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/yuv2rgb/yuv_rgb.h \
+  /Users/mtorsell/CLionProjects/Wolf3D/SDL2-2.0.9/src/video/yuv2rgb/yuv_rgb.h \
   include/SDL_stdinc.h include/SDL_cpuinfo.h \
-  /Users/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/yuv2rgb/yuv_rgb_std_func.h \
-  /Users/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/video/yuv2rgb/yuv_rgb_sse_func.h
+  /Users/mtorsell/CLionProjects/Wolf3D/SDL2-2.0.9/src/video/yuv2rgb/yuv_rgb_std_func.h \
+  /Users/mtorsell/CLionProjects/Wolf3D/SDL2-2.0.9/src/video/yuv2rgb/yuv_rgb_sse_func.h
