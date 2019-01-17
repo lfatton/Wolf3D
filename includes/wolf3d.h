@@ -65,10 +65,10 @@ typedef	struct		s_coords_double
 	double			y;
 }					t_coords_double;
 
-typedef struct 		s_coords
+typedef struct		s_coords
 {
-	int 			x;
-	int 			y;
+	int				x;
+	int				y;
 }					t_coords;
 
 typedef struct		s_player
@@ -101,7 +101,7 @@ typedef struct		s_sprites
 	SDL_Surface		*wallS;
 	SDL_Surface		*wallW;
 	SDL_Surface		*wallE;
-	SDL_Surface     *wall;
+	SDL_Surface		*wall;
 }					t_sprites;
 
 typedef struct		s_env
@@ -113,7 +113,7 @@ typedef struct		s_env
 	SDL_Surface		*surf;
 	int				quit;
 	int				col;
-    int				start;
+	int				start;
 	int				end;
 	Uint32			color;
 	t_coords		map_pos;
@@ -143,7 +143,7 @@ void				loop_wolf(t_env *e);
 
 void				raycasting(t_env *e);
 
-Uint32 				get_pixel(SDL_Surface *s, int x, int y);
+Uint32				get_pixel(SDL_Surface *s, int x, int y);
 void				put_pixel(SDL_Surface *s, int x, int y, Uint32 color);
 void				print_image(t_env *e);
 

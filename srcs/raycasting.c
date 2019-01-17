@@ -6,7 +6,7 @@
 /*   By: lfatton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 00:01:55 by lfatton           #+#    #+#             */
-/*   Updated: 2019/01/14 11:18:29 by lfatton          ###   ########.fr       */
+/*   Updated: 2019/01/17 19:42:25 by lfatton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static double	raycast_hor(t_env *e)
 		e->r->step.x = -e->r->step.x;
 	dda(e);
 	return (sqrt(ft_sq((e->p->pos.x - e->r->hit.x))
-	+ ft_sq((e->p->pos.y- e->r->hit.y))));
+	+ ft_sq((e->p->pos.yi - e->r->hit.y))));
 }
 
 void			raycasting(t_env *e)

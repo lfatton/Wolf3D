@@ -6,7 +6,7 @@
 /*   By: lfatton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 17:52:06 by lfatton           #+#    #+#             */
-/*   Updated: 2019/01/15 18:17:33 by lfatton          ###   ########.fr       */
+/*   Updated: 2019/01/17 19:45:46 by lfatton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static void	init_player(t_env *e)
 	e->p->pos.x *= TILE;
 }
 
-void	init_wolf(t_env *e)
+void		init_wolf(t_env *e)
 {
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
 		error_wolf("error: cannot run SDL");
