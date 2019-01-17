@@ -12,17 +12,12 @@
 
 #include "wolf3d.h"
 
-//void		floorcasting(t_env *e)
-//{
-	
-
-//}
-
-static void	dda(t_env *e)
+static void		dda(t_env *e)
 {
 	e->map_pos.x = e->r->hit.x / (int)TILE;
 	e->map_pos.y = e->r->hit.y / (int)TILE;
-	while (e->map_pos.x > 0 && e->map_pos.y > 0 && e->map_pos.x < MAP_W && e->map_pos.y < MAP_H && e->tiles[e->map_pos.y][e->map_pos.x] == tEmpty)
+	while (e->map_pos.x > 0 && e->map_pos.y > 0 && e->map_pos.x < MAP_W
+		&& e->map_pos.y < MAP_H && e->tiles[e->map_pos.y][e->map_pos.x] == tEmpty)
 	{
 		e->r->hit.x += e->r->step.x;
 		e->r->hit.y += e->r->step.y;
@@ -52,7 +47,8 @@ static double	raycast_ver(t_env *e)
 	if (e->r->ang >= NORTH && e->r->ang <= SOUTH)
 		e->r->step.y = -e->r->step.y;
 	dda(e);
-	return (sqrt(ft_sq((e->p->pos.x - e->r->hit.x)) + ft_sq((e->p->pos.y - e->r->hit.y))));
+	return (sqrt(ft_sq((e->p->pos.x - e->r->hit.x)) +
+	ft_sq((e->p->pos.y - e->r->hit.y))));
 }
 
 static double	raycast_hor(t_env *e)
@@ -76,17 +72,18 @@ static double	raycast_hor(t_env *e)
 	if (e->r->ang > WEST)
 		e->r->step.x = -e->r->step.x;
 	dda(e);
-	return (sqrt(ft_sq((e->p->pos.x - e->r->hit.x)) + ft_sq((e->p->pos.y - e->r->hit.y))));
+	return (sqrt(ft_sq((e->p->pos.x - e->r->hit.x))
+	+ ft_sq((e->p->pos.y- e->r->hit.y))));
 }
 
-void	raycasting(t_env *e)
+void			raycasting(t_env *e)
 {
 	double	h_res;
 	double	v_res;
 
-	e->x = 0;
+	e->col = 0;
 	e->r->ang = e->p->vis + FOV / 2;
-	while (e->x < WIN_W)
+	while (e->col < WIN_W)
 	{
 		e->hori = 0;
 		e->r->ang += (e->r->ang < 0) ? 360 : 0;
@@ -101,6 +98,6 @@ void	raycasting(t_env *e)
 			e->r->dist = v_res;
 		draw(e);
 		e->r->ang -= DECR_ANG;
-		e->x++;
+		e->col++;
 	}
 }

@@ -12,54 +12,43 @@
 
 #include "wolf3d.h"
 
-void    move_if_allowed(t_env *e, t_coords_double test)
+static void	move_if_allowed(t_env *e)
 {
-    e->map_pos.x = test.x / (int)TILE;
-    e->map_pos.y = test.y / (int)TILE;
+    e->map_pos.x = e->test.x / (int)TILE;
+    e->map_pos.y = e->test.y / (int)TILE;
     if (e->tiles[e->map_pos.y][e->map_pos.x])
     {
-        e->p->pos.x = test.x;
-        e->p->pos.y = test.y;
+        e->p->pos.x = e->test.x;
+        e->p->pos.y = e->test.y;
     }
 }
 
-void	move_left(t_env *e)
+void		move(t_env *e, Uint8 key)
 {
-	t_coords_double	test;
-	
-	test.x = e->p->pos.x + cos(ft_degtorad(e->p->vis + 90)) * SPEED;
-	test.y = e->p->pos.y - sin(ft_degtorad(e->p->vis + 90)) * SPEED;
-    move_if_allowed(e, test);
+	if (key == SDL_SCANCODE_W || key == SDL_SCANCODE_UP)
+	{
+		e->test.x = e->p->pos.x + cos(ft_degtorad(e->p->vis)) * SPEED;
+		e->test.y = e->p->pos.y - sin(ft_degtorad(e->p->vis)) * SPEED;
+	}
+	else if (key == SDL_SCANCODE_S || key == SDL_SCANCODE_DOWN)
+	{
+		e->test.x = e->p->pos.x - cos(ft_degtorad(e->p->vis)) * SPEED;
+		e->test.y = e->p->pos.y + sin(ft_degtorad(e->p->vis)) * SPEED;
+	}
+	else if (key == SDL_SCANCODE_A)
+	{
+		e->test.x = e->p->pos.x + cos(ft_degtorad(e->p->vis + 90)) * SPEED;
+		e->test.y = e->p->pos.y - sin(ft_degtorad(e->p->vis + 90)) * SPEED;
+	}
+	else if (key == SDL_SCANCODE_D)
+	{
+		e->test.x = e->p->pos.x - cos(ft_degtorad(e->p->vis + 90)) * SPEED;
+		e->test.y = e->p->pos.y + sin(ft_degtorad(e->p->vis + 90)) * SPEED;
+	}
+	move_if_allowed(e);
 }
 
-void	move_right(t_env *e)
-{
-t_coords_double	test;
-	
-	test.x = e->p->pos.x - cos(ft_degtorad(e->p->vis + 90)) * SPEED;
-	test.y = e->p->pos.y + sin(ft_degtorad(e->p->vis + 90)) * SPEED;
-    move_if_allowed(e, test);
-}
-
-void	move_down(t_env *e)
-{
-t_coords_double	test;
-	
-	test.x = e->p->pos.x - cos(ft_degtorad(e->p->vis)) * SPEED;
-	test.y = e->p->pos.y + sin(ft_degtorad(e->p->vis)) * SPEED;
-    move_if_allowed(e, test);
-}
-
-void	move_up(t_env *e)
-{
-t_coords_double	test;
-	
-	test.x = e->p->pos.x + cos(ft_degtorad(e->p->vis)) * SPEED;
-	test.y = e->p->pos.y - sin(ft_degtorad(e->p->vis)) * SPEED;
-    move_if_allowed(e, test);
-}
-
-void	crouch_and_fly(t_env *e, int key, int type)
+void		crouch_and_fly(t_env *e, Uint32 type, Uint8 key)
 {
 	double	newheight;
 

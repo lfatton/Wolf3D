@@ -10,18 +10,20 @@
 #                                                                              #
 # **************************************************************************** #
 
-.PHONY: all, norm, git, clean, fclean, re
+.PHONY: all, run, norm, git, clean, fclean, re
 
 NAME = wolf3d
 
 SRC_PATH = srcs
 
 SRC_NAME =	main.c \
-			environment.c \
 			map_extractor.c \
 			bmp_loader.c \
 			map_verifs.c \
+			environment.c \
+			loop.c \
 			raycasting.c \
+			draw_utils.c \
 			draw.c \
 			motion.c \
 
@@ -55,7 +57,7 @@ LIBS = -lm -lpthread
 
 CC = clang
 
-CFLAGS = -Wall -Werror -Wextra #-Ofast -ftlo
+CFLAGS = -Wall -Werror -Wextra
 
 ifeq ($(shell uname), Darwin)
 	CONFIGURE_SDL = cd $(SDL_NAME) ; ./configure --prefix="/Users/$(USER)/$(SDL_NAME)"; $(MAKE) -j; $(MAKE) install
@@ -81,7 +83,7 @@ $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INCL)
 	@$(CC) $(CFLAGS) $(IFLAGS) $(SDL_CFLAGS) -o $@ -c $<
 
 run: $(NAME)
-	@./$(NAME) assets/bmp/satan.bmp
+	@./$(NAME) assets/bmp/basic.bmp
 
 norm:
 	@norminette $(SRCS) $(INCL)

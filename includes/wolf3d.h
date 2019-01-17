@@ -6,7 +6,7 @@
 /*   By: lfatton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 17:37:43 by lfatton           #+#    #+#             */
-/*   Updated: 2019/01/14 12:05:51 by lfatton          ###   ########.fr       */
+/*   Updated: 2019/01/17 15:17:59 by lfatton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,21 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <string.h>
-# include <sys/types.h>
-# include <sys/stat.h>
 # include <fcntl.h>
 # include <math.h>
-#include <stdio.h>
 
-# define MAP_W 100
-# define MAP_H 100
-# define BMP_PATH "assets/bmp/basic.bmp"
 # define WIN_W 1360
 # define WIN_H 764
 # define HALF_W WIN_W / 2
 # define HALF_H WIN_H / 2
+# define MAP_W 100
+# define MAP_H 100
+# define BMP_PATH "assets/bmp/basic.bmp"
+
 # define FOV 60.0
 # define TILE 64
 # define SPEED 25
+# define ROT 5
 # define DECR_ANG FOV / (double)WIN_W
 # define RATIO TILE * (HALF_W / tan(ft_degtorad(FOV / 2)))
 
@@ -110,40 +108,23 @@ typedef struct		s_env
 {
 	SDL_Window		*win;
 	SDL_Renderer	*render;
-	t_sprites		*sprites;
-	t_coords	map_pos;
-	int				map_w;
-	int				map_h;
 	enum TTile		**tiles;
 	SDL_Texture		*text;
 	SDL_Surface		*surf;
 	int				quit;
-	int				x;
-    int				y;
+	int				col;
+    int				start;
 	int				end;
-	Uint32				color;
+	Uint32			color;
+	t_coords		map_pos;
+	int				map_w;
+	int				map_h;
 	int				hori;
-	t_player			*p;
-	t_ray				*r;
+	t_coords_double	test;
+	t_player		*p;
+	t_ray			*r;
+	t_sprites		*sprites;
 }					t_env;
-
-void				error_wolf(char *err);
-int					quit_wolf(t_env *e);
-void				init_wolf(t_env *e);
-void				loop_wolf(t_env *e);
-
-void				raycasting(t_env *e);
-
-Uint32 				get_pixel(SDL_Surface *s, int x, int y);
-void				put_pixel(SDL_Surface *s, int x, int y, Uint32 color);
-void				draw(t_env *e);
-void				print_image(t_env *e);
-
-void				move_left(t_env *e);
-void				move_right(t_env *e);
-void				move_down(t_env *e);
-void				move_up(t_env *e);
-void				crouch_and_fly(t_env *e, int k, int type);
 
 t_sprites			*get_sprites(int ac, char **av, t_env *e);
 SDL_Surface			*extract_map(SDL_Surface *all);
@@ -153,4 +134,21 @@ void				verify_map(enum TTile **tiles);
 int					apply_to_whole_map(enum TTile **tiles, int (*action)(enum TTile*, int, int));
 int					isnt_PlayerSpawn(enum TTile *tile, int x, int y);
 int					put_wall_if_border(enum TTile *tile, int x, int y);
+
+void				error_wolf(char *err);
+int					quit_wolf(t_env *e);
+void				init_wolf(t_env *e);
+
+void				loop_wolf(t_env *e);
+
+void				raycasting(t_env *e);
+
+Uint32 				get_pixel(SDL_Surface *s, int x, int y);
+void				put_pixel(SDL_Surface *s, int x, int y, Uint32 color);
+void				print_image(t_env *e);
+
+void				draw(t_env *e);
+
+void				move(t_env *e, Uint8 key);
+void				crouch_and_fly(t_env *e, Uint32 type, Uint8 key);
 #endif
