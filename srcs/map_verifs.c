@@ -1,22 +1,35 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_verifs.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mtorsell <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/01/17 23:59:34 by mtorsell          #+#    #+#             */
+/*   Updated: 2019/01/17 23:59:38 by mtorsell         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "wolf3d.h"
 
-int					put_wall_if_border(enum TTile *tile, int x, int y)
+int					put_wall_if_border(enum e_tile *tile, int x, int y)
 {
 	if (y == 0 || y == MAP_H - 1 || x == 0 || x == MAP_W - 1)
-		*tile = tWall;
+		*tile = t_wall;
 	return (1);
 }
 
-int					isnt_PlayerSpawn(enum TTile *tile, int x, int y)
+int					isnt_playerspawn(enum e_tile *tile, int x, int y)
 {
 	(void)x;
 	(void)y;
-	if (*tile == tPlayerSpawn)
+	if (*tile == t_p_spawn)
 		return (0);
 	return (1);
 }
 
-int					apply_to_whole_map(enum TTile **tiles, int (*action)(enum TTile*, int, int))
+int					apply_to_whole_map(enum e_tile **til,
+		int (*action)(enum e_tile*, int, int))
 {
 	int				x;
 	int				y;
@@ -26,8 +39,9 @@ int					apply_to_whole_map(enum TTile **tiles, int (*action)(enum TTile*, int, i
 	while (y < MAP_H)
 	{
 		x = 0;
-		while (x < MAP_W) {
-			ret = (*action)(&(tiles[y][x]), y, x);
+		while (x < MAP_W)
+		{
+			ret = (*action)(&(til[y][x]), y, x);
 			if (!ret)
 				return (ret);
 			x++;
@@ -37,9 +51,9 @@ int					apply_to_whole_map(enum TTile **tiles, int (*action)(enum TTile*, int, i
 	return (ret);
 }
 
-void			verify_map(enum TTile **tiles)
+void				verify_map(enum e_tile **til)
 {
-	(void)apply_to_whole_map(tiles, &put_wall_if_border);
-	if (apply_to_whole_map(tiles, &isnt_PlayerSpawn))
-		tiles[rand() % (MAP_H - 2) + 1][rand() % (MAP_W - 2) + 1] = tPlayerSpawn;
+	(void)apply_to_whole_map(til, &put_wall_if_border);
+	if (apply_to_whole_map(til, &isnt_PlayerSpawn))
+		til[rand() % (MAP_H - 2) + 1][rand() % (MAP_W - 2) + 1] = t_p_spawn;
 }

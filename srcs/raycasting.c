@@ -17,7 +17,7 @@ static void		dda(t_env *e)
 	e->map_pos.x = e->r->hit.x / (int)TILE;
 	e->map_pos.y = e->r->hit.y / (int)TILE;
 	while (e->map_pos.x > 0 && e->map_pos.y > 0 && e->map_pos.x < MAP_W
-		&& e->map_pos.y < MAP_H && e->tiles[e->map_pos.y][e->map_pos.x] == tEmpty)
+		&& e->map_pos.y < MAP_H && e->til[e->map_pos.y][e->map_pos.x] == t_nil)
 	{
 		e->r->hit.x += e->r->step.x;
 		e->r->hit.y += e->r->step.y;
@@ -73,7 +73,7 @@ static double	raycast_hor(t_env *e)
 		e->r->step.x = -e->r->step.x;
 	dda(e);
 	return (sqrt(ft_sq((e->p->pos.x - e->r->hit.x))
-	+ ft_sq((e->p->pos.yi - e->r->hit.y))));
+	+ ft_sq((e->p->pos.y - e->r->hit.y))));
 }
 
 void			raycasting(t_env *e)

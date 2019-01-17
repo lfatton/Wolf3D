@@ -45,18 +45,11 @@
 # define EAST 0
 # define CIRCLE 360
 
-enum				TPixColor_ABGR
+enum				e_tile
 {
-	tRed = 3,
-	tGreen = 2,
-	tBlue = 1
-};
-
-enum				TTile
-{
-	tWall,
-	tPlayerSpawn,
-	tEmpty
+	t_wall,
+	t_p_spawn,
+	t_nil
 };
 
 typedef	struct		s_coords_double
@@ -97,10 +90,10 @@ typedef struct		s_sprites
 {
 	SDL_Surface		*all;
 	SDL_Surface		*map;
-	SDL_Surface		*wallN;
-	SDL_Surface		*wallS;
-	SDL_Surface		*wallW;
-	SDL_Surface		*wallE;
+	SDL_Surface		*w_n;
+	SDL_Surface		*w_s;
+	SDL_Surface		*w_w;
+	SDL_Surface		*w_e;
 	SDL_Surface		*wall;
 }					t_sprites;
 
@@ -108,7 +101,7 @@ typedef struct		s_env
 {
 	SDL_Window		*win;
 	SDL_Renderer	*render;
-	enum TTile		**tiles;
+	enum e_tile		**til;
 	SDL_Texture		*text;
 	SDL_Surface		*surf;
 	int				quit;
@@ -123,17 +116,18 @@ typedef struct		s_env
 	t_coords_double	test;
 	t_player		*p;
 	t_ray			*r;
-	t_sprites		*sprites;
+	t_sprites		*spr;
 }					t_env;
 
 t_sprites			*get_sprites(int ac, char **av, t_env *e);
 SDL_Surface			*extract_map(SDL_Surface *all);
-enum TTile			**transform_pixels_to_tiles(SDL_Surface *map);
+enum e_tile			**transform_pixels_to_tiles(SDL_Surface *map);
 void				read_tiles(t_env *e);
-void				verify_map(enum TTile **tiles);
-int					apply_to_whole_map(enum TTile **tiles, int (*action)(enum TTile*, int, int));
-int					isnt_PlayerSpawn(enum TTile *tile, int x, int y);
-int					put_wall_if_border(enum TTile *tile, int x, int y);
+void				verify_map(enum e_tile **til);
+int					apply_to_whole_map(enum e_tile **til,
+						int (*action)(enum e_tile*, int, int));
+int					isnt_playerspawn(enum e_tile *tile, int x, int y);
+int					put_wall_if_border(enum e_tile *tile, int x, int y);
 
 void				error_wolf(char *err);
 int					quit_wolf(t_env *e);

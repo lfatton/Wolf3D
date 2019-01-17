@@ -14,8 +14,8 @@
 
 static void	draw_wall(t_env *e)
 {
-	if (e->sprites->wall == e->sprites->wallS || e->sprites->wall
-		== e->sprites->wallW)
+	if (e->sprites->wall == e->sprites->w_s || e->sprites->wall
+		== e->sprites->w_w)
 		e->r->text.x = TILE - e->r->text.x;
 	while (e->start < e->end)
 	{
@@ -60,17 +60,17 @@ void		draw(t_env *e)
 	{
 		e->r->text.x = fmod(e->r->h_hit_x, TILE);
 		if (e->r->ang > EAST && e->r->ang < WEST)
-			e->sprites->wall = e->sprites->wallN;
+			e->sprites->wall = e->sprites->w_n;
 		else
-			e->sprites->wall = e->sprites->wallS;
+			e->sprites->wall = e->sprites->w_s;
 	}
 	else
 	{
 		e->r->text.x = fmod(e->r->v_hit_y, TILE);
 		if (e->r->ang >= NORTH && e->r->ang <= SOUTH)
-			e->sprites->wall = e->sprites->wallW;
+			e->sprites->wall = e->sprites->w_w;
 		else
-			e->sprites->wall = e->sprites->wallE;
+			e->sprites->wall = e->sprites->w_e;
 	}
 	draw_wall(e);
 }

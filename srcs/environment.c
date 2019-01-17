@@ -20,10 +20,10 @@ void		error_wolf(char *err)
 
 int			quit_wolf(t_env *e)
 {
-	SDL_FreeSurface(e->sprites->wallN);
-	SDL_FreeSurface(e->sprites->wallW);
-	SDL_FreeSurface(e->sprites->wallS);
-	SDL_FreeSurface(e->sprites->wallE);
+	SDL_FreeSurface(e->sprites->w_n);
+	SDL_FreeSurface(e->sprites->w_w);
+	SDL_FreeSurface(e->sprites->w_s);
+	SDL_FreeSurface(e->sprites->w_e);
 	SDL_FreeSurface(e->sprites->map);
 	SDL_FreeSurface(e->sprites->all);
 	SDL_FreeSurface(e->surf);
@@ -47,7 +47,7 @@ static void	spawn_player(t_env *e)
 		e->p->pos.x = 1;
 		while (e->p->pos.x < MAP_W - 1)
 		{
-			if (e->tiles[(int)e->p->pos.y][(int)e->p->pos.x] == tPlayerSpawn)
+			if (e->til[(int)e->p->pos.y][(int)e->p->pos.x] == t_p_spawn)
 				return ;
 			e->p->pos.x++;
 		}
@@ -62,7 +62,7 @@ static void	init_player(t_env *e)
 	e->p->crouch = 0;
 	e->p->fly = 0;
 	spawn_player(e);
-	e->tiles[(int)e->p->pos.y][(int)e->p->pos.x] = tEmpty;
+	e->til[(int)e->p->pos.y][(int)e->p->pos.x] = t_nil;
 	e->p->pos.y *= TILE;
 	e->p->pos.x *= TILE;
 }
