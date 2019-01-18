@@ -19,6 +19,8 @@ SDL_Surface			*cpy_fr_surf(SDL_Surface *src, t_coords from, t_coords size)
 	int				x;
 	int				y;
 
+	if (from.x + size.x > src->w || from.y + size.y > src->h)
+		return (NULL);
 	if (!(new = SDL_CreateRGBSurfaceWithFormat(0,
 			size.x, size.y, 32, src->format->format)))
 		return (NULL);
@@ -72,7 +74,7 @@ t_sprites			*get_sprites(int ac, char **av, t_env *e)
 		return (NULL);
 	if (ac)
 		path = av[1];
-	if (!(spr->all = SDL_LoadBMP(path)))
+	if (!(spr->all = SDL_LoadBMP(path)) || spr->all->format->BytesPerPixel < 4)
 		return (NULL);
 	if (!(spr->map = cpy_fr_surf(spr->all, start, dimensions)))
 		return (NULL);

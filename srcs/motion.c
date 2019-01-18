@@ -16,7 +16,7 @@ static void	move_if_allowed(t_env *e)
 {
 	e->map_pos.x = e->test.x / (int)TILE;
 	e->map_pos.y = e->test.y / (int)TILE;
-	if (e->til[e->map_pos.y][e->map_pos.x])
+	if (e->til[e->map_pos.y][e->map_pos.x] != t_wall)
 	{
 		e->p->pos.x = e->test.x;
 		e->p->pos.y = e->test.y;
