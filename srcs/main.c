@@ -17,7 +17,7 @@ int			main(int ac, char **av)
 	t_env	*e;
 
 	if (!(e = (t_env*)malloc(sizeof(t_env))))
-		error_wolf("error: cannot allocate memory");
+		error_wolf("error: cannot allocate memory for struct env");
 	if (ac > 2)
 		error_wolf("usage: ./wolf3d or ./wolf3d input_file to "
 			"override textures and map with your own");
