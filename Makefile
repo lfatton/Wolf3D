@@ -64,10 +64,15 @@ CFLAGS = -Wall -Werror -Wextra
 RM = rm -rf
 
 ifeq ($(shell uname), Darwin)
-	CONFIGURE_SDL = cd $(SDL_NAME) && ./configure --prefix="/Users/$(USER)/$(SDL_NAME)" && $(MAKE) -j && $(MAKE) install
+	CONFIGURE_SDL = cd $(SDL_NAME) && ./configure \
+	    --prefix="/Users/$(USER)/$(SDL_NAME)" && $(MAKE) -j && $(MAKE) install
+	SDL_LDFLAGS = -L/Users/$(USER)/SDL2-2.0.9/lib -lSDL2
+	SDL_CFLAGS = -I/Users/$(USER)/SDL2-2.0.9/include/SDL2 -D_THREAD_SAFE
 else
-	CONFIGURE_SDL = cd $(SDL_NAME) && ./configure --prefix="/home/lfatton/$(SDL_NAME)" && $(MAKE) -j && $(MAKE) install
-	SDL_LDFLAGS = -L/usr/local/lib -Wl,-rpath,/usr/local/lib -Wl,--enable-new-dtags -lSDL2
+	CONFIGURE_SDL = cd $(SDL_NAME) && ./configure \
+	    --prefix="/home/lfatton/$(SDL_NAME)" && $(MAKE) -j && $(MAKE) install
+	SDL_LDFLAGS = -L/usr/local/lib -Wl,-rpath,/usr/local/lib \
+	    -Wl,--enable-new-dtags -lSDL2
 	SDL_CFLAGS = -I/usr/local/include/SDL2 -D_REENTRANT
 endif
 
