@@ -73,7 +73,7 @@ static double	raycast_hor(t_env *e)
 		e->r->step.x = -e->r->step.x;
 	dda(e);
 	return (sqrt(ft_sq((e->p->pos.x - e->r->hit.x))
-	+ ft_sq((e->p->pos.yi - e->r->hit.y))));
+	+ ft_sq((e->p->pos.y - e->r->hit.y))));
 }
 
 void			raycasting(t_env *e)
@@ -86,8 +86,10 @@ void			raycasting(t_env *e)
 	while (e->col < WIN_W)
 	{
 		e->hori = 0;
-		e->r->ang += (e->r->ang < 0) ? 360 : 0;
-		e->r->ang -= (e->r->ang >= 360) ? 360 : 0;
+		while (e->r->ang >= 360)
+			e->r->ang -= 360;
+		while (e->r->ang < 0)
+			e->r->ang += 360;
 		h_res = raycast_hor(e);
 		e->r->h_hit_x = e->r->hit.x;
 		v_res = raycast_ver(e);

@@ -12,37 +12,34 @@
 
 #include "wolf3d.h"
 
-static void	treat_events(t_env *e, SDL_Event ev)
+static void	loop_events(t_env *e, const Uint8 *state)
 {
-	if ((ev.type == SDL_QUIT || ev.key.keysym.scancode == SDL_SCANCODE_ESCAPE)
-			&& (e->quit = 1))
-		quit_wolf(e);
-	if (ev.type == SDL_MOUSEMOTION)
-		e->p->vis -= ev.motion.xrel;
-	if (ev.type == SDL_KEYDOWN && ev.key.keysym.scancode == SDL_SCANCODE_LEFT)
-		e->p->vis += ROT;
-	if (ev.type == SDL_KEYDOWN && ev.key.keysym.scancode == SDL_SCANCODE_RIGHT)
-		e->p->vis -= ROT;
-	if (ev.type == SDL_KEYDOWN && (ev.key.keysym.scancode == SDL_SCANCODE_W
-		|| ev.key.keysym.scancode == SDL_SCANCODE_UP || ev.key.keysym.scancode
-			== SDL_SCANCODE_S || ev.key.keysym.scancode == SDL_SCANCODE_DOWN
-				|| ev.key.keysym.scancode == SDL_SCANCODE_A
-					|| ev.key.keysym.scancode == SDL_SCANCODE_D))
-		move(e, ev.key.keysym.scancode);
-	if (ev.key.keysym.scancode == SDL_SCANCODE_LSHIFT || ev.key.keysym.scancode
-			== SDL_SCANCODE_F)
-		crouch_and_fly(e, ev.type, ev.key.keysym.scancode);
+	SDL_Event	ev;
+
+	while (SDL_PollEvent(&ev))
+	{
+		if (ev.type == SDL_QUIT || state[SDL_SCANCODE_ESCAPE])
+			quit_wolf(e);
+		if (ev.type == SDL_MOUSEMOTION)
+			e->p->vis -= ev.motion.xrel * MOUSE_SENSI;
+		if (state[SDL_SCANCODE_LEFT])
+			e->p->vis += ROT;
+		if (state[SDL_SCANCODE_RIGHT])
+			e->p->vis -= ROT;
+	}
 }
 
 void		loop_wolf(t_env *e)
 {
-	SDL_Event ev;
+	const Uint8	*state;
 
-	while (!e->quit)
+	state = SDL_GetKeyboardState(NULL);
+	while (42)
 	{
 		raycasting(e);
 		print_image(e);
-		while (SDL_PollEvent(&ev))
-			treat_events(e, ev);
+		loop_events(e, state);
+		move(e, state);
+		crouch_or_fly(e, state);
 	}
 }
