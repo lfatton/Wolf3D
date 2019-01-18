@@ -62,9 +62,8 @@ static void	init_player(t_env *e)
 	e->p->crouch = 0;
 	e->p->fly = 0;
 	spawn_player(e);
-	e->til[(int)e->p->pos.y][(int)e->p->pos.x] = t_nil;
-	e->p->pos.y *= TILE;
-	e->p->pos.x *= TILE;
+	e->p->pos.y = e->p->pos.y * TILE + 0.5 * TILE;
+	e->p->pos.x = e->p->pos.x * TILE + 0.5 * TILE;
 }
 
 void		init_wolf(t_env *e)
