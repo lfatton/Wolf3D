@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-.PHONY: all, run, norm, git, clean, fclean, re
+.PHONY: all, extract, run, norm, git, clean, fclean, re
 
 NAME = wolf3d
 
@@ -35,54 +35,55 @@ OBJ_NAME = $(SRC_NAME:.c=.o)
 
 OBJS = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
 
-INCL_NAME = wolf3d.h
-
 INCL_PATH = includes
 
-SDL_NAME = SDL2-2.0.9
-
-USER = $(shell whoami)
-
-LIBFT_INCL_PATH = ./libft/includes
-
-SDL_INCL_PATH = ./$(SDL_NAME)/include
+INCL_NAME = wolf3d.h
 
 INCL = $(addprefix $(INCL_PATH)/,$(INCL_NAME))
 
-IFLAGS = -I $(INCL_PATH) -I $(LIBFT_INCL_PATH) -I $(SDL_INCL_PATH)
+LIBFT_INCL_PATH = ./libft/includes
 
 LDLIBFT = -L ./libft -lft
 
-LIBS = -lm -lpthread
+LIBS = -lm
+
+SDL_NAME = SDL2-2.0.9
+
+EXTRACT = tar -xzf $(SDL_NAME).tar.gz
+
+SDL_INCL_PATH = ./$(SDL_NAME)/include
+
+IFLAGS = -I $(INCL_PATH) -I $(LIBFT_INCL_PATH) -I $(SDL_INCL_PATH)
+
+USER = $(shell whoami)
 
 CC = clang
 
 CFLAGS = -Wall -Werror -Wextra
 
-ifeq ($(shell uname), Darwin)
-	CONFIGURE_SDL = cd $(SDL_NAME) ; ./configure \
-	--prefix="/Users/$(USER)/$(SDL_NAME)"; $(MAKE) -j; $(MAKE) install
-else
-	CONFIGURE_SDL = cd $(SDL_NAME) ; ./configure ;\
-	$(MAKE) -j; sudo $(MAKE) install
-endif
-
-SDL_LDFLAGS = $(shell cd $(SDL_NAME) ; ./sdl2-config --libs)
-
-SDL_CFLAGS = $(shell cd $(SDL_NAME) ; ./sdl2-config --cflags)
-
 RM = rm -rf
 
-all: $(NAME)
+ifeq ($(shell uname), Darwin)
+	CONFIGURE_SDL = cd $(SDL_NAME) && ./configure --prefix="/Users/$(USER)/$(SDL_NAME)" && $(MAKE) -j && $(MAKE) install
+else
+	CONFIGURE_SDL = cd $(SDL_NAME) && ./configure --prefix="/home/lfatton/$(SDL_NAME)" && $(MAKE) -j && $(MAKE) install
+	SDL_LDFLAGS = -L/usr/local/lib -Wl,-rpath,/usr/local/lib -Wl,--enable-new-dtags -lSDL2
+	SDL_CFLAGS = -I/usr/local/include/SDL2 -D_REENTRANT
+endif
+
+all: extract $(NAME)
 
 $(NAME): $(OBJS)
-	@if [ ! -d "./$(SDL_NAME)/build" ] ; then $(CONFIGURE_SDL) ; fi
-	@$(MAKE) -C libft
+	@if [ ! -d $(SDL_NAME)/build ]; then $(CONFIGURE_SDL); fi
+	@$(MAKE) -j -C libft
 	@$(CC) $(OBJS) $(LDLIBFT) $(LIBS) $(SDL_LDFLAGS) -o $@
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INCL)
 	@mkdir $(OBJ_PATH) 2> /dev/null || true
 	@$(CC) $(CFLAGS) $(IFLAGS) $(SDL_CFLAGS) -o $@ -c $<
+
+extract:
+	@if [ ! -d $(SDL_NAME) ]; then $(EXTRACT); fi
 
 run: $(NAME)
 	@./$(NAME) assets/bmp/basic.bmp
@@ -90,9 +91,7 @@ run: $(NAME)
 norm:
 	@norminette $(SRCS) $(INCL)
 
-git: clean
-	@$(RM) $(NAME)
-	@$(MAKE) -C libft fclean
+git: fclean
 	@git add -A
 	@git status
 
@@ -103,6 +102,6 @@ clean:
 fclean: clean
 	@$(RM) $(NAME)
 	@$(MAKE) -C libft fclean
-	@$(MAKE) -C $(SDL_NAME) clean
+	@$(RM) $(SDL_NAME)
 
 re: fclean all
