@@ -58,7 +58,7 @@ static void	spawn_player(t_env *e)
 static void	init_player(t_env *e)
 {
 	e->p->height = HALF_H;
-	e->p->vis = 30;
+	e->p->vis = EAST;
 	e->p->crouch = 0;
 	e->p->fly = 0;
 	spawn_player(e);
@@ -79,6 +79,5 @@ void		init_wolf(t_env *e)
 	if (!(e->surf = SDL_CreateRGBSurfaceWithFormat(0, WIN_W, WIN_H, 32,
 			e->spr->all->format->format)))
 		error_wolf("error: cannot create surface");
-	e->quit = 0;
 	init_player(e);
 }

@@ -23,41 +23,38 @@ static void	move_if_allowed(t_env *e)
 	}
 }
 
-void		move(t_env *e, Uint8 key)
+void		move(t_env *e, const Uint8 *state)
 {
-	if (key == SDL_SCANCODE_W || key == SDL_SCANCODE_UP)
+	if (state[SDL_SCANCODE_W] || state[SDL_SCANCODE_UP])
 	{
-		e->test.x = e->p->pos.x + cos(ft_degtorad(e->p->vis)) * SPEED;
-		e->test.y = e->p->pos.y - sin(ft_degtorad(e->p->vis)) * SPEED;
+		e->test.x = e->p->pos.x + cos(ft_degtorad(e->p->vis)) * RUN;
+		e->test.y = e->p->pos.y - sin(ft_degtorad(e->p->vis)) * RUN;
 	}
-	else if (key == SDL_SCANCODE_S || key == SDL_SCANCODE_DOWN)
+	else if (state[SDL_SCANCODE_S] || state[SDL_SCANCODE_DOWN])
 	{
-		e->test.x = e->p->pos.x - cos(ft_degtorad(e->p->vis)) * SPEED;
-		e->test.y = e->p->pos.y + sin(ft_degtorad(e->p->vis)) * SPEED;
+		e->test.x = e->p->pos.x - cos(ft_degtorad(e->p->vis)) * RUN;
+		e->test.y = e->p->pos.y + sin(ft_degtorad(e->p->vis)) * RUN;
 	}
-	else if (key == SDL_SCANCODE_A)
+	move_if_allowed(e);
+	if (state[SDL_SCANCODE_A])
 	{
-		e->test.x = e->p->pos.x + cos(ft_degtorad(e->p->vis + 90)) * SPEED;
-		e->test.y = e->p->pos.y - sin(ft_degtorad(e->p->vis + 90)) * SPEED;
+		e->test.x = e->p->pos.x + cos(ft_degtorad(e->p->vis + 90)) * STRAFF;
+		e->test.y = e->p->pos.y - sin(ft_degtorad(e->p->vis + 90)) * STRAFF;
 	}
-	else if (key == SDL_SCANCODE_D)
+	else if (state[SDL_SCANCODE_D])
 	{
-		e->test.x = e->p->pos.x - cos(ft_degtorad(e->p->vis + 90)) * SPEED;
-		e->test.y = e->p->pos.y + sin(ft_degtorad(e->p->vis + 90)) * SPEED;
+		e->test.x = e->p->pos.x - cos(ft_degtorad(e->p->vis + 90)) * STRAFF;
+		e->test.y = e->p->pos.y + sin(ft_degtorad(e->p->vis + 90)) * STRAFF;
 	}
 	move_if_allowed(e);
 }
 
-void		crouch_and_fly(t_env *e, Uint32 type, Uint8 key)
+void		crouch_or_fly(t_env *e, const Uint8 *state)
 {
-	double	newheight;
-
-	if (key == SDL_SCANCODE_LSHIFT)
-		newheight = WIN_H - 2 * WIN_H / 3;
-	else if (key == SDL_SCANCODE_F)
-		newheight = WIN_H - WIN_H / 3;
-	if (type == SDL_KEYDOWN)
-		e->p->height = newheight;
-	else if (type == SDL_KEYUP)
+	if (state[SDL_SCANCODE_C])
+		e->p->height = WIN_H - 2 * WIN_H / 3;
+	else if (state[SDL_SCANCODE_F])
+		e->p->height = WIN_H - WIN_H / 3;
+	else if (!state[SDL_SCANCODE_C] && !state[SDL_SCANCODE_F])
 		e->p->height = HALF_H;
 }

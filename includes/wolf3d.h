@@ -16,9 +16,7 @@
 # include "SDL.h"
 # include "libft.h"
 
-# include <unistd.h>
 # include <stdlib.h>
-# include <fcntl.h>
 # include <math.h>
 
 # define WIN_W 1360
@@ -31,8 +29,6 @@
 
 # define FOV 60.0
 # define TILE 64
-# define SPEED 25
-# define ROT 5
 # define DECR_ANG FOV / (double)WIN_W
 # define RATIO TILE * (HALF_W / tan(ft_degtorad(FOV / 2)))
 
@@ -44,6 +40,11 @@
 # define WEST 180
 # define EAST 0
 # define CIRCLE 360
+
+# define RUN 10
+# define STRAFF RUN / 2
+# define ROT 5
+# define MOUSE_SENSI 0.1
 
 enum				e_tile
 {
@@ -104,7 +105,6 @@ typedef struct		s_env
 	enum e_tile		**til;
 	SDL_Texture		*text;
 	SDL_Surface		*surf;
-	int				quit;
 	int				col;
 	int				start;
 	int				end;
@@ -143,6 +143,6 @@ void				print_image(t_env *e);
 
 void				draw(t_env *e);
 
-void				move(t_env *e, Uint8 key);
-void				crouch_and_fly(t_env *e, Uint32 type, Uint8 key);
+void				move(t_env *e, const Uint8 *state);
+void				crouch_or_fly(t_env *e, const Uint8 *state);
 #endif
