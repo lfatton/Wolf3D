@@ -110,8 +110,6 @@ typedef struct		s_env
 	int				end;
 	Uint32			color;
 	t_coords		map_pos;
-	int				map_w;
-	int				map_h;
 	int				hori;
 	t_coords_double	test;
 	t_player		*p;
