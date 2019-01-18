@@ -19,7 +19,7 @@ int					put_wall_if_border(enum e_tile *tile, int x, int y)
 	return (1);
 }
 
-int					isnt_playerspawn(enum e_tile *tile, int x, int y)
+int					is_not_p_spawn(enum e_tile *tile, int x, int y)
 {
 	(void)x;
 	(void)y;
@@ -54,6 +54,6 @@ int					apply_to_whole_map(enum e_tile **til,
 void				verify_map(enum e_tile **til)
 {
 	(void)apply_to_whole_map(til, &put_wall_if_border);
-	if (apply_to_whole_map(til, &isnt_PlayerSpawn))
+	if (apply_to_whole_map(til, &is_not_p_spawn))
 		til[rand() % (MAP_H - 2) + 1][rand() % (MAP_W - 2) + 1] = t_p_spawn;
 }

@@ -20,12 +20,12 @@ void		error_wolf(char *err)
 
 int			quit_wolf(t_env *e)
 {
-	SDL_FreeSurface(e->sprites->w_n);
-	SDL_FreeSurface(e->sprites->w_w);
-	SDL_FreeSurface(e->sprites->w_s);
-	SDL_FreeSurface(e->sprites->w_e);
-	SDL_FreeSurface(e->sprites->map);
-	SDL_FreeSurface(e->sprites->all);
+	SDL_FreeSurface(e->spr->w_n);
+	SDL_FreeSurface(e->spr->w_w);
+	SDL_FreeSurface(e->spr->w_s);
+	SDL_FreeSurface(e->spr->w_e);
+	SDL_FreeSurface(e->spr->map);
+	SDL_FreeSurface(e->spr->all);
 	SDL_FreeSurface(e->surf);
 	SDL_DestroyTexture(e->text);
 	SDL_DestroyRenderer(e->render);
@@ -33,7 +33,7 @@ int			quit_wolf(t_env *e)
 	SDL_Quit();
 	free(e->p);
 	free(e->r);
-	free(e->sprites);
+	free(e->spr);
 	free(e);
 	exit(EXIT_SUCCESS);
 	return (0);
@@ -77,7 +77,7 @@ void		init_wolf(t_env *e)
 	if (SDL_SetRelativeMouseMode(SDL_TRUE) > 0)
 		error_wolf("error: cannot hide mouse cursor");
 	if (!(e->surf = SDL_CreateRGBSurfaceWithFormat(0, WIN_W, WIN_H, 32,
-			e->sprites->all->format->format)))
+			e->spr->all->format->format)))
 		error_wolf("error: cannot create surface");
 	e->quit = 0;
 	init_player(e);

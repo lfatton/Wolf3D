@@ -1,11 +1,11 @@
 build/SDL_syssem.lo: \
-  /Users/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/thread/pthread/SDL_syssem.c \
-  /Users/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/thread/pthread/../../SDL_internal.h \
-  /Users/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/thread/pthread/../../dynapi/SDL_dynapi.h \
-  /Users/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/thread/pthread/../../dynapi/SDL_dynapi_overrides.h \
+  /Users/mtorsell/CLionProjects/Wolf3D/SDL2-2.0.9/src/thread/pthread/SDL_syssem.c \
+  /Users/mtorsell/CLionProjects/Wolf3D/SDL2-2.0.9/src/thread/pthread/../../SDL_internal.h \
+  /Users/mtorsell/CLionProjects/Wolf3D/SDL2-2.0.9/src/thread/pthread/../../dynapi/SDL_dynapi.h \
+  /Users/mtorsell/CLionProjects/Wolf3D/SDL2-2.0.9/src/thread/pthread/../../dynapi/SDL_dynapi_overrides.h \
   include/SDL_config.h include/SDL_platform.h include/begin_code.h \
   include/close_code.h include/SDL_thread.h include/SDL_stdinc.h \
   include/SDL_error.h include/SDL_atomic.h include/SDL_mutex.h \
   include/SDL_timer.h \
-  /Users/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/thread/pthread/../generic/SDL_syssem.c \
-  /Users/lfatton/Louttia/wolf3d/SDL2-2.0.9/src/thread/pthread/../generic/SDL_systhread_c.h
+  /Users/mtorsell/CLionProjects/Wolf3D/SDL2-2.0.9/src/thread/pthread/../generic/SDL_syssem.c \
+  /Users/mtorsell/CLionProjects/Wolf3D/SDL2-2.0.9/src/thread/pthread/../generic/SDL_systhread_c.h

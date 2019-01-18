@@ -126,7 +126,7 @@ void				read_tiles(t_env *e);
 void				verify_map(enum e_tile **til);
 int					apply_to_whole_map(enum e_tile **til,
 						int (*action)(enum e_tile*, int, int));
-int					isnt_playerspawn(enum e_tile *tile, int x, int y);
+int					is_not_p_spawn(enum e_tile *tile, int x, int y);
 int					put_wall_if_border(enum e_tile *tile, int x, int y);
 
 void				error_wolf(char *err);

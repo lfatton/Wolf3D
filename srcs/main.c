@@ -21,7 +21,7 @@ int			main(int ac, char **av)
 	if (ac > 2)
 		error_wolf("usage: ./wolf3d or ./wolf3d input_file to "
 			"override textures and map with your own");
-	if (!(e->sprites = get_sprites(ac - 1, av, e)))
+	if (!(e->spr = get_sprites(ac - 1, av, e)))
 		error_wolf("There was an issue while loading the bmp.");
 	if (!(e->p = (t_player*)malloc(sizeof(t_player))))
 		error_wolf("error: cannot allocate memory for struct player");
