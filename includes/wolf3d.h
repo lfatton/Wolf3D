@@ -129,7 +129,7 @@ int					apply_to_whole_map(enum e_tile **til,
 int					is_not_p_spawn(enum e_tile *tile, int x, int y);
 int					put_wall_if_border(enum e_tile *tile, int x, int y);
 
-void				error_wolf(char *err, t_env *e);
+void				error_wolf(char *err);
 int					quit_wolf(t_env *e);
 void				init_wolf(t_env *e);
 
