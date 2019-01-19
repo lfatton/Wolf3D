@@ -71,18 +71,18 @@ t_sprites			*get_sprites(int ac, char **av, t_env *e)
 	dimensions.y = MAP_H;
 	path = BMP_PATH;
 	if (!(spr = (t_sprites*)malloc(sizeof(t_sprites))))
-		return (NULL);
+		error_wolf("There was an issue while allocating memory.");
 	if (ac)
 		path = av[1];
 	if (!(spr->all = SDL_LoadBMP(path)) || spr->all->format->BytesPerPixel < 4)
-		return (NULL);
+		error_wolf("It seems your BMP is invalid. It need to be 32bits.");
 	if (!(spr->map = cpy_fr_surf(spr->all, start, dimensions)))
-		return (NULL);
+		error_wolf("There was an issue with SDL_Surface creation.");
 	if (!(e->til = transform_pixels_to_tiles((spr->map))))
-		return (NULL);
+		error_wolf("There has been an issue while mallocing for the map.");
 	extract_walls(spr);
 	if (!spr->w_n || !spr->w_s || !spr->w_e || !spr->w_w)
-		return (NULL);
+		error_wolf("There was an issue with SDL_Surface creation.");
 	verify_map(e->til);
 	return (spr);
 }
