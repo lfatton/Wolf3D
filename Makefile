@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-.PHONY: all, extract, run, norm, git, clean, fclean, re
+.PHONY: all, run, norm, git, clean, fclean, re
 
 NAME = wolf3d
 
@@ -76,38 +76,36 @@ else
 	SDL_CFLAGS = -I/usr/local/include/SDL2 -D_REENTRANT
 endif
 
-all: extract $(NAME)
+all: $(NAME)
 
 $(NAME): $(OBJS)
-	@if [ ! -d $(SDL_NAME)/build ]; then $(CONFIGURE_SDL); fi
-	@$(MAKE) -j -C libft
-	@$(CC) $(OBJS) $(LDLIBFT) $(LIBS) $(SDL_LDFLAGS) -o $@
+	if [ ! -d $(SDL_NAME) ]; then $(EXTRACT); fi
+	if [ ! -d $(SDL_NAME)/build ]; then $(CONFIGURE_SDL); fi
+	$(MAKE) -j -C libft
+	$(CC) $(OBJS) $(LDLIBFT) $(LIBS) $(SDL_LDFLAGS) -o $@
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INCL)
-	@mkdir $(OBJ_PATH) 2> /dev/null || true
-	@$(CC) $(CFLAGS) $(IFLAGS) $(SDL_CFLAGS) -o $@ -c $<
-
-extract:
-	@if [ ! -d $(SDL_NAME) ]; then $(EXTRACT); fi
+	mkdir $(OBJ_PATH) 2> /dev/null || true
+	$(CC) $(CFLAGS) $(IFLAGS) $(SDL_CFLAGS) -o $@ -c $<
 
 run: all
-	@./$(NAME) assets/bmp/basic.bmp
+	./$(NAME) assets/bmp/basic.bmp
 
 norm:
-	@norminette $(SRCS) $(INCL)
-	@$(MAKE) -C libft norm
+	norminette $(SRCS) $(INCL)
+	$(MAKE) -C libft norm
 
 git: fclean
-	@git add -A
-	@git status
+	git add -A
+	git status
 
 clean:
-	@$(RM) $(OBJS)
-	@rmdir $(OBJ_PATH) 2> /dev/null || true
+	$(RM) $(OBJS)
+	rmdir $(OBJ_PATH) 2> /dev/null || true
 
 fclean: clean
-	@$(RM) $(NAME)
-	@$(MAKE) -C libft fclean
-	@$(RM) $(SDL_NAME)
+	$(RM) $(NAME)
+	$(MAKE) -C libft fclean
+	$(RM) $(SDL_NAME)
 
 re: fclean all
