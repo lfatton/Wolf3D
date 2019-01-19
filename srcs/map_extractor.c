@@ -41,12 +41,12 @@ enum e_tile			**transform_pixels_to_tiles(SDL_Surface *map)
 	int			x;
 
 	if (!(til = (enum e_tile**)malloc(sizeof(enum e_tile *) * MAP_H)))
-		return (NULL);
+		error_wolf("There was an issue while mallocing til");
 	i = 0;
 	while (i < MAP_H)
 	{
 		if (!(til[i] = (enum e_tile*)malloc(sizeof(enum e_tile) * MAP_W)))
-			return (NULL);
+			error_wolf("There was an issue while mallocing *til");
 		i++;
 	}
 	y = -1;
