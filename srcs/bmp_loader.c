@@ -23,7 +23,7 @@ SDL_Surface			*cpy_fr_surf(SDL_Surface *src, t_coords from, t_coords size)
 		return (NULL);
 	if (!(new = SDL_CreateRGBSurfaceWithFormat(0,
 			size.x, size.y, 32, src->format->format)))
-		return (NULL);
+		error_wolf("There was an issue while creating a surface");
 	pixels = (Uint32 *)src->pixels;
 	y = 0;
 	while (y < size.y)
