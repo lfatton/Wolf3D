@@ -90,11 +90,12 @@ $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INCL)
 extract:
 	@if [ ! -d $(SDL_NAME) ]; then $(EXTRACT); fi
 
-run: $(NAME)
+run: all
 	@./$(NAME) assets/bmp/basic.bmp
 
 norm:
 	@norminette $(SRCS) $(INCL)
+	@$(MAKE) -C libft norm
 
 git: fclean
 	@git add -A
