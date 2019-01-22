@@ -28,6 +28,7 @@
 # define BMP_PATH "assets/bmp/basic.bmp"
 
 # define FOV 60.0
+# define WALL_RES 64
 # define TILE 64
 # define DECR_ANG FOV / (double)WIN_W
 # define RATIO TILE * (HALF_W / tan(ft_degtorad(FOV / 2)))

@@ -47,8 +47,8 @@ void				extract_walls(t_sprites *spr)
 
 	start.x = 0;
 	start.y = MAP_H;
-	dimensions.x = TILE;
-	dimensions.y = TILE;
+	dimensions.x = WALL_RES;
+	dimensions.y = WALL_RES;
 	spr->w_n = cpy_fr_surf(spr->all, start, dimensions);
 	start.x += TILE;
 	spr->w_s = cpy_fr_surf(spr->all, start, dimensions);
