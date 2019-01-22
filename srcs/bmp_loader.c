@@ -50,11 +50,11 @@ void				extract_walls(t_sprites *spr)
 	dimensions.x = WALL_RES;
 	dimensions.y = WALL_RES;
 	spr->w_n = cpy_fr_surf(spr->all, start, dimensions);
-	start.x += TILE;
+	start.x += WALL_RES;
 	spr->w_s = cpy_fr_surf(spr->all, start, dimensions);
-	start.x += TILE;
+	start.x += WALL_RES;
 	spr->w_e = cpy_fr_surf(spr->all, start, dimensions);
-	start.x += TILE;
+	start.x += WALL_RES;
 	spr->w_w = cpy_fr_surf(spr->all, start, dimensions);
 }
 
