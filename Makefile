@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-.PHONY: all, run, norm, git, clean, fclean, re
+.PHONY: all, extract, run, norm, git, clean, fclean, re
 
 NAME = wolf3d
 

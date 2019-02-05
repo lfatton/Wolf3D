@@ -6,7 +6,7 @@
 /*   By: lfatton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 23:54:09 by lfatton           #+#    #+#             */
-/*   Updated: 2019/01/14 11:28:31 by lfatton          ###   ########.fr       */
+/*   Updated: 2019/02/05 16:41:42 by lfatton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 static void	draw_wall(t_env *e)
 {
 	if (e->spr->wall == e->spr->w_s || e->spr->wall
-		== e->spr->w_w)
-		e->r->text.x = TILE - e->r->text.x;
+			== e->spr->w_w)
+		e->r->text.x = WALL_RES - e->r->text.x;
 	while (e->start < e->end)
 	{
 		e->r->text.y = (e->start - e->p->height + e->r->length / 2)
-				* TILE / e->r->length;
+			* WALL_RES / e->r->length;
 		e->color = get_pixel(e->spr->wall, e->r->text.x, e->r->text.y);
 		put_pixel(e->surf, e->col, e->start, e->color);
 		e->start++;

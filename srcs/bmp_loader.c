@@ -6,7 +6,7 @@
 /*   By: mtorsell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:08:55 by mtorsell          #+#    #+#             */
-/*   Updated: 2019/01/17 23:19:10 by mtorsell         ###   ########.fr       */
+/*   Updated: 2019/02/05 16:47:02 by lfatton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ SDL_Surface			*cpy_fr_surf(SDL_Surface *src, t_coords from, t_coords size)
 		x = 0;
 		while (x < size.x)
 		{
-			((Uint32 *)new->pixels)[x + (y * size.x)] =
-					pixels[(from.x + x) + ((from.y + y) * src->w)];
+			((Uint32 *)new->pixels)[x + (y
+				* size.x)] = pixels[(from.x + x) + ((from.y + y) * src->w)];
 			x++;
 		}
 		y++;

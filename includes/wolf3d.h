@@ -6,7 +6,7 @@
 /*   By: lfatton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 17:37:43 by lfatton           #+#    #+#             */
-/*   Updated: 2019/01/17 15:17:59 by lfatton          ###   ########.fr       */
+/*   Updated: 2019/02/05 16:44:46 by lfatton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,4 +144,5 @@ void				draw(t_env *e);
 
 void				move(t_env *e, const Uint8 *state);
 void				crouch_or_fly(t_env *e, const Uint8 *state);
+
 #endif
