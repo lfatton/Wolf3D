@@ -75,7 +75,7 @@ t_sprites			*get_sprites(int ac, char **av, t_env *e)
 	if (ac)
 		path = av[1];
 	if (!(spr->all = SDL_LoadBMP(path)) || spr->all->format->BytesPerPixel < 4)
-		error_wolf("It seems your BMP is invalid. It need to be 32bits.");
+		error_wolf("It seems your BMP is invalid. It needs to be 32bits.");
 	if (!(spr->map = cpy_fr_surf(spr->all, start, dimensions)))
 		error_wolf("There was an issue with SDL_Surface creation.");
 	if (!(e->til = transform_pixels_to_tiles((spr->map))))
